@@ -43,6 +43,7 @@ import {QChooserService} from './quiz/choser/service/q-chooser.service';
 import {QuizService} from './service/quiz.service';
 import { FreshDialogComponent } from './fresh-page/fresh-dialog/fresh-dialog.component';
 import {EventSocketService} from "./service/event-socket.service";
+import { CategoryComponent } from './category/category.component';
 
 
 const appRoutes: Routes = [
@@ -63,6 +64,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'choose', component: ChoserComponent
+  },
+  {
+    path: 'category', component: CategoryComponent
   }
 ];
 
@@ -83,7 +87,8 @@ const appRoutes: Routes = [
     PickaQComponent,
     TimerComponent,
     ChoserComponent,
-    FreshDialogComponent
+    FreshDialogComponent,
+    CategoryComponent
   ],
   imports: [
     AnimatorModule, BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, FlexLayoutModule,

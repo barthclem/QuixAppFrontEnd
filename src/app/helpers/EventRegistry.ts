@@ -22,6 +22,8 @@ export const TimeEventRegistry = {
   START_PAGE_END_EVENT : 'StartPageEnd',
   ENTRY_PAGE_TIMER_STOPPED_EVENT : 'EntryPageTimerStopped',
   ENTRY_PAGE_TIMER_STARTED_EVENT: 'EntryPageTimerStarted',
+  ENTRY_PAGE_TIMER_STOPPED_RESPONSE: 'EntryPageTimerStoppedResponse',
+  ONLINE_TIME_RESPONSE: 'OnlineTimeResponse',
   STOP_TIMER_EVENT: 'StopTimerEvent',
   INTER_BREAK_FINISHED_EVENT : 'InterBreakFinished',
   QUESTION_ALERT_EVENT : 'QuestionAlert',

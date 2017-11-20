@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {UserInterface} from '../helpers/userDetails';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {SendMessage} from '../helpers/SendMessage';
-import {TypingMessage} from "../helpers/TypingMessage";
+import {TypingMessage} from '../helpers/TypingMessage';
 
 export interface Message {
   author: string;
