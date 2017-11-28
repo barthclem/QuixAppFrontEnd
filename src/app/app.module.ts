@@ -44,6 +44,7 @@ import {QuizService} from './service/quiz.service';
 import { FreshDialogComponent } from './fresh-page/fresh-dialog/fresh-dialog.component';
 import {EventSocketService} from "./service/event-socket.service";
 import { CategoryComponent } from './category/category.component';
+import { StageComponent } from './stage/stage.component';
 
 
 const appRoutes: Routes = [
@@ -67,6 +68,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'category', component: CategoryComponent
+  },
+  {
+    path: 'stage', component: StageComponent
   }
 ];
 
@@ -88,7 +92,8 @@ const appRoutes: Routes = [
     TimerComponent,
     ChoserComponent,
     FreshDialogComponent,
-    CategoryComponent
+    CategoryComponent,
+    StageComponent
   ],
   imports: [
     AnimatorModule, BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, FlexLayoutModule,

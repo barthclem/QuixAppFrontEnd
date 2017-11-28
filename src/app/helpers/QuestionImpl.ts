@@ -4,9 +4,41 @@ import {Question} from './question';
  */
 export class QuestionImpl implements Question {
 
-  constructor(private _id: number, private _type: number, private _title: string,
-  private _img: string, private _answers: string []) {
+  private _category: string;
+  private _questionText: string;
+  private _options: string[];
+  private _id: number;
+  private _type: number;
+  private _title: string;
+  private _img: string;
+  private _answers: string [];
+  constructor() {}
 
+  // constructor(private _id: number, private _type: number, private _title: string,
+  // private _img: string, private _answers: string []) {
+  //
+  // }
+
+  get options(): string[] {
+    return this._options;
+  }
+
+  set options(value: string[]) {
+    this._options = value;
+  }
+  get questionText(): string {
+    return this._questionText;
+  }
+
+  set questionText(value: string) {
+    this._questionText = value;
+  }
+  get category(): string {
+    return this._category;
+  }
+
+  set category(value: string) {
+    this._category = value;
   }
 
   get answers(): string[] {

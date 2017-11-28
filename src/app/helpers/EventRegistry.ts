@@ -33,13 +33,17 @@ export const TimeEventRegistry = {
 };
 
 export const QuizEventRegistry = {
+  PICK_NOTIFY_TEAM: 'PickNotifyTeam',
+  PICK_NOTIFY_ALL: 'PickNotifyAll',
   QUESTION_ANSWERED_EVENT : 'QuestionAnswered',
   QUESTION_SELECTED_EVENT : 'QuestionSelected',
   ANSWERED_LOADED_EVENT : 'AnsweredLoaded',
+  QUESTION_LOADED_EVENT : 'QuestionLoaded',
   BONUS_LOADED_EVENT : 'BonusLoaded',
   BONUS_ATTEMPTED_EVENT : 'BonusAttempted',
   END_OF_QUIZ_EVENT : 'EndOfQuiz',
   START_OF_NEW_CATEGORY : 'StartOfNewCategory',
+  END_OF_CATEGORY : 'StartOfNewCategory',
   USER_DETAILS_TAKEN_EVENT : 'UserDetialsTaken',
-  USER_TURN_TO_PICK_QUESION_EVENT : 'UsersTurnToPickQuestion'
+  USER_TURN_TO_PICK_QUESTION_EVENT : 'UsersTurnToPickQuestion'
 };
