@@ -42,9 +42,10 @@ import { ChoserComponent } from './quiz/choser/choser.component';
 import {QChooserService} from './quiz/choser/service/q-chooser.service';
 import {QuizService} from './service/quiz.service';
 import { FreshDialogComponent } from './fresh-page/fresh-dialog/fresh-dialog.component';
-import {EventSocketService} from "./service/event-socket.service";
+import {EventSocketService} from './service/event-socket.service';
 import { CategoryComponent } from './category/category.component';
 import { StageComponent } from './stage/stage.component';
+import {QuizResultService} from './service/quiz-result.service';
 
 
 const appRoutes: Routes = [
@@ -102,7 +103,7 @@ const appRoutes: Routes = [
     MatInputModule, MatCheckboxModule, MatSelectModule, RouterModule.forRoot(appRoutes),
   ],
   providers: [ ChatService, WebsocketService, NavService,
-    QuizEventService, TimeService, QChooserService, QuizService, EventSocketService],
+    QuizEventService, TimeService, QChooserService, QuizService, QuizResultService, EventSocketService],
   entryComponents: [DialogComponent, FreshDialogComponent],
   bootstrap: [AppComponent]
 })

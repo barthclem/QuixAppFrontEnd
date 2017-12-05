@@ -1,0 +1,59 @@
+<div  fxFlex>
+  <app-online-users></app-online-users>
+  <!--<ngx-flash-messages></ngx-flash-messages>-->
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-comment"></span> Team {{team}}
+    </div>
+    <div #chatScroll class="panel-body">
+      <ul class="chat">
+        <li *ngFor="let message of messages">
+
+          <div class="left clearfix" *ngIf=" username === message.sender; else rightChat">
+              <span class="chat-img pull-left">
+                <img src="./assets/img/me.png" alt="User Avatar" class="img-circle" />
+              </span>
+
+            <div class="chat-body clearfix" >
+              <div class="header">
+                <strong class="primary-font">{{message.sender}}</strong> <small class="pull-right text-muted">
+                <span class="glyphicon glyphicon-time"></span>{{message.time}}</small>
+              </div>
+              <p>
+                {{message.text}}
+              </p>
+            </div>
+          </div>
+          <ng-template #rightChat>
+            <div class="right clearfix">
+                   <span class="chat-img pull-right">
+                     <img src="./assets/img/U.png" alt="User Avatar" class="img-circle" />
+                   </span>
+              <div class="chat-body clearfix" >
+                <div class="header" >
+                  <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>{{message.time}}</small>
+                  <strong class="pull-right primary-font">{{message.sender}}</strong>
+                </div>
+                <p>
+                  {{message.text}}
+                </p>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+
+      </ul>
+    </div>
+    <div class="panel-footer">
+      <div class="input-group">
+        <input id="btn-input" type="text"  [value] = "text" (input)= "text= $event.target.value"
+               (keypress) ="userIsTyping()" class="form-control input-sm" placeholder="Type your message here..." />
+        <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat" (click)="sendMessage()" >
+                Send</button>
+            </span>
+      </div>
+    </div>
+  </div>
+</div>
+

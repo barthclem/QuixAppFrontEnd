@@ -1,0 +1,54 @@
+<div fxFlexFill fxLayout="row" fxFlexAlign="center center" class="freshBg">
+  <mat-card  class ="eventsParent"
+             fxFlexOffset="10" fxFlex="80" fxFlexAlign="center">
+    <mat-card-header>
+      <h5 id="title" fxFlex>Quix Categories</h5>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="column"  class="freshPage" *ngIf="!endCategoryPageEnabled; else endPage">
+        <p > Welcome to New Category </p>
+        <mat-card >
+          <mat-card-header fxLayoutAlign="center">
+            <mat-card-title >
+              <p class="startP" align="center"> {{categoryName}} Category Information </p>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content fxLayoutAlign="center" fxFlexAlign="center">
+            <mat-list    fxLayout="column">
+              <mat-list-item fxFlex   fxLayout="row" fxLayoutGap="10px">
+                <p class="startP"  fxFlex="30">Rounds :</p>
+                <p class="startP"  fxFlex="70">{{numberOfRounds}}</p>
+              </mat-list-item>
+              <mat-list-item fxFlex fxLayout="row">
+                <p class="startP"  fxFlex="30">Participating Teams :</p>
+                <p class="startP"  fxFlex="70">{{teams.toString()}}</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<ng-template #endPage>
+  <div fxFlex fxLayout="column"  class="freshPage">
+    <mat-card >
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title >
+          <p class="startP" align="center"> Quix Rules and Regulation </p>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item >
+            {{categoryName}}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>
+
+

@@ -1,0 +1,23 @@
+
+
+<h5>Enter Your Details</h5>
+<form #form="ngForm" (ngSubmit)="dialogRef.close(form.value)" ngNativeValidate>
+  <div fxLayout="column" fxLayoutAlign="center center">
+
+  <div fxFlexOffset="20" fxFlex="60" fxLayout="column" fxLayoutGap="8px">
+
+    <mat-input-container>
+      <input matInput ngModel name="username" placeholder="username" required>
+    </mat-input-container>
+
+    <mat-input-container>
+      <input matInput ngModel name="team" placeholder="team name"  required>
+    </mat-input-container>
+
+  </div>
+  <mat-dialog-actions align="end">
+    <button matButton type="submit">Start</button>
+  </mat-dialog-actions>
+
+  </div>
+</form>

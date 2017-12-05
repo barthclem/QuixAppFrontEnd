@@ -1,0 +1,60 @@
+<div fxFlex fxLayout="row" fxFlexAlign="center center" class="freshBg">
+  <mat-card  class ="eventsParent"
+             fxFlexOffset="25" fxFlex="50" fxFlexAlign="center">
+    <mat-card-header>
+      <h5 id="title" fxFlex> Quix Events</h5>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxFlex fxLayout="column"  class="freshPage" *ngIf="!proceedToRules; else rulesPage">
+        <p > Herald Quix Competition</p>
+        <span fxFlexAlign="center"><img src="../../assets/compete.jpg" class="eventPic"></span>
+        <p> Quix Organizers:  Herald Events International</p>
+        <mat-card >
+          <mat-card-header fxLayoutAlign="center">
+            <mat-card-title >
+              <p class="startP" align="center"> Participant Information </p>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content fxLayoutAlign="center" fxFlexAlign="center">
+            <mat-list    fxLayout="column">
+              <mat-list-item fxFlex   fxLayout="row">
+                <p class="startP"  fxFlex="30">Name</p>
+                <p class="startP"  fxFlex="70">Oyeyemi Clement</p>
+              </mat-list-item>
+              <mat-list-item fxFlex fxLayout="row">
+                <p class="startP"  fxFlex="30">Team</p>
+                <p class="startP"  fxFlex="70">Tortoisezertrt</p>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <span fxFlex></span>
+      <button matButton class="mat-primary proceedButton" (click)="startQuiz()"> Proceed to Modalities </button>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+
+<ng-template #rulesPage>
+  <div fxFlex fxLayout="column"  class="freshPage">
+    <mat-card >
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title >
+          <p class="startP" align="center"> Quix Rules and Regulation </p>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let rule of rules">
+            {{rule}}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>
+
+

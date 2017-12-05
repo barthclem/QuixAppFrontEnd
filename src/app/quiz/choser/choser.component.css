@@ -1,0 +1,22 @@
+questionTag {
+  box-shadow: 10px 10px grey;
+}
+.questionTag:hover {
+  box-shadow: #a88680 1px 1px 1px 1px;
+  background-color: white;
+  color: white;
+}
+
+disableTags {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  pointer-events: none;
+}
+
+pickedNotific {
+  font: Helvetica, Arial, sans-serif;
+  font-size: large;
+  align-content: center;
+  color: firebrick;
+  background-color: #F5F5F5;
+}

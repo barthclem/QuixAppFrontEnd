@@ -1,0 +1,68 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.freshBg{
+  background-image: url("../../assets/doodles.png");
+  padding: 20px;
+  height: 100%;
+}
+
+.freshPage {
+ background-color: #ffffff;
+  margin: 0;
+  height: 100%;
+}
+
+#title{
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  color: lightsalmon;
+  border-bottom: 2px solid #bfbfbf ;
+}
+
+p{
+  font-family:  Monaco, "Lucida Console", monospace;
+  color: dimgray;
+  font-size: 15px;
+  text-align: center;
+  margin: 10px;
+}
+
+.eventPic {
+  margin: auto;
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 4px;
+
+}
+
+
+mat-card-title{
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid #bfbfbf ;
+}
+
+.startP {
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.proceedButton {
+  position: absolute;
+  right: 24px;
+  margin-top: 10px;
+}
+
+.eventsParent {
+  height: 100%;
+  overflow-wrap: normal;
+}

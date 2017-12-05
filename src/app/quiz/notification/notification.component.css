@@ -1,0 +1,23 @@
+mat-toolbar {
+  min-height: 35px;
+  max-height: 50px;
+  padding: 0px !important;
+}
+
+.toolBarTitle{
+  font-size: 15px;
+  font-family: "Lato Black", monospace;
+}
+.toolBarKey {
+  font-size: 15px;
+  font-family: "Lato Black", monospace;
+  padding: 2px;
+  margin-right: 10px;
+}
+
+.toolBarValue {
+  font-size: 15px;
+  font-family: Monaco, "Lucida Console", monospace;
+  padding: 2px;
+  margin-right: 10px;
+}
