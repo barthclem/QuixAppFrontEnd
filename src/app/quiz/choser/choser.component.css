@@ -7,7 +7,7 @@ questionTag {
   color: white;
 }
 
-disableTags {
+disableTag {
   opacity: 0.4;
   filter: alpha(opacity=40);
   pointer-events: none;

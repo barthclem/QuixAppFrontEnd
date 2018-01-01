@@ -53,8 +53,6 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
     } else {
       this.subscribeToTeamMatePickedQuestion();
     }
-    console.log(`User's turn: ${this.quizService.teamTurn}`);
-    console.log(`Question Tag: ${JSON.stringify(this.questionTags)}`);
   }
 
   ngOnInit() {
@@ -102,8 +100,8 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
       .setDelay(100)
       .setDuration(700)
       .hide(this._elementRef.nativeElement)
-      .then(() => { console.log('Page is loaded'); })
-      .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
+      .then(() => { this.router.navigate(['quiz']); console.log('Left the Question Picking Page'); })
+      .catch( error => { console.log(`fade Out - Error using Animation => ${error}`); });
 
   }
 
@@ -125,7 +123,6 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
             console.log(`CHOSER COMPONENT: Question downloaded from the net: ${JSON.stringify(question)}`);
             this.quizService.currentQuestion = question;
             this.fadeOut();
-            this.navigateToQuiz();
           }
 
         })

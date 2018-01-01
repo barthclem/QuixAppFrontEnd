@@ -37,15 +37,27 @@
     <mat-card >
       <mat-card-header fxLayoutAlign="center">
         <mat-card-title >
-          <p class="startP" align="center"> Quix Rules and Regulation </p>
+          <p class="startP" align="center"> End of Category {{categoryName}} </p>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-list>
-          <mat-list-item >
-            {{categoryName}}
-          </mat-list-item>
-        </mat-list>
+        <div id="myScoreSummary">
+          <h5> My Team Score Summary</h5>
+          <p>Position : {{teamPosition}}  TotalScore: {{teamTotalScore}}</p>
+        </div>
+          <table>
+            <tr>
+              <th>Position</th>
+              <th>Team Name</th>
+              <th>Score</th>
+              </tr>
+            <tr *ngFor="let team of teamScoresList">
+              <td>{{team.teamPosition}}</td>
+            <td>{{team.teamName}}</td>
+            <td>{{team.teamTotalScore}}</td>
+            </tr>
+          </table>
+
       </mat-card-content>
     </mat-card>
   </div>

@@ -13,9 +13,10 @@
       </div></mat-card-title>
     <mat-card-content >
       <div class="pickedNotific" *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</div>
-      <mat-grid-list  [ngClass]="aTeamHasPickedQue ? 'disableTags': ''" cols="4" gutterSize="4px" rowHeight="100px">
-        <mat-grid-tile #tag class="questionTag" *ngFor="let button of questionTags | async"
-                         [style.background]="button.available ? 'red' : 'blue'"
+      <mat-grid-list  [ngClass]="aTeamHasPickedQue ? 'disableTag': ''" cols="4" gutterSize="4px" rowHeight="100px">
+        <mat-grid-tile #tag class="questionTag"  *ngFor="let button of questionTags | async"
+                       [ngClass]="button.available? '': 'questionTag'"
+                         [style.background]="button.available ? 'red' : '#ffcd9c'"
         (click) = selectAQuestion(button.questionNumber) >
             {{button.questionNumber}}
         </mat-grid-tile>
@@ -43,3 +44,4 @@
       </mat-card>
     </div>
   </ng-template>
+</div>

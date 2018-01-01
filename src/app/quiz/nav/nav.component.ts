@@ -37,8 +37,8 @@ export class NavComponent extends  Unsubscriber  implements OnInit {
     this.subscriptions.push(
       this.quizEventService.onUpdateMyTeamScore()
         .subscribe( team => {
-          console.log(`My Team Score Update : ${JSON.stringify(team)}`);
-          console.log(`status : ${team.qualified}  position : ${team.position} totalScore : ${team.totalScore}`);
+          console.log(`=> My Team Score Update : ${JSON.stringify(team)}`);
+          console.log(`=> status : ${team.qualified}  position : ${team.position} totalScore : ${team.totalScore}`);
           this.status = team.qualified;
           this.position = team.position;
           this.score = team.totalScore;

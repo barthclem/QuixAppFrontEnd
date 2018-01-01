@@ -33,17 +33,17 @@ export class QuizResultService extends Unsubscriber{
   }
 
   public updateTeamList ( teams: Team []) {
+    console.log(`Updated Team List => ${JSON.stringify(teams)}`);
     teams.forEach( team => {
-      console.log(`Start browsing the list of teams`);
+      console.log(`=> Start browsing the list of teams`);
       const foundTeam = this._allTeams.find( t => t.name === team.name);
-      console.log(`My Team Name: ${this.teamName}  Team found : ${JSON.stringify(foundTeam)}`);
       if (foundTeam) {
          const foundTeamIndex = this._allTeams.indexOf(foundTeam);
          this._allTeams[foundTeamIndex] = team;
          if (foundTeam.name === this.teamName) {
-           console.log(`My Team is => ${JSON.stringify(foundTeam)}`);
-           this._myTeam = foundTeam;
-           this.quizEventService.fireUpdateMyTeamsScore(foundTeam);
+           console.log(`=> My Team is => ${JSON.stringify(team)}`);
+           this._myTeam = team;
+           this.quizEventService.fireUpdateMyTeamsScore(team);
          }
       } else {
         this._allTeams.push(team);
@@ -58,6 +58,4 @@ export class QuizResultService extends Unsubscriber{
   public getMyTeam () {
     return this._myTeam;
   }
-
-
 }

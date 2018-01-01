@@ -6,6 +6,8 @@ import {Unsubscriber} from '../service/Unsubscriber';
 import {Router} from '@angular/router';
 import {AnimationService, AnimationBuilder} from 'css-animator';
 import {QChooserService} from '../quiz/choser/service/q-chooser.service';
+import {QuizResultService} from '../service/quiz-result.service';
+import {TimeService} from "../service/time.service";
 
 @Component({
   selector: 'app-category',
@@ -15,6 +17,9 @@ import {QChooserService} from '../quiz/choser/service/q-chooser.service';
 export class CategoryComponent extends Unsubscriber implements OnInit {
 
   public endCategoryPageEnabled: boolean;
+  public teamTotalScore: number;
+  public teamPosition: number;
+  public teamScoresList: any;
   public categoryName = '';
   public numberOfRounds = 0;
   public teams: string [] = [];
@@ -22,16 +27,22 @@ export class CategoryComponent extends Unsubscriber implements OnInit {
 
   private _animator: AnimationBuilder;
 
-   constructor( private quizService: QuizService,
-                private quizEventService: QuizEventService,
-                private pickerService: QChooserService,
-                private animationService: AnimationService,
-                private _elementRef: ElementRef,
-                private router: Router) {
+   constructor(
+     private quizService: QuizService,
+     private quizEventService: QuizEventService,
+     private quizResultService: QuizResultService,
+     private timeService: TimeService,
+     private animationService: AnimationService,
+     private _elementRef: ElementRef,
+     private router: Router
+   ) {
      super();
      this.subscribeToNewCategory();
-     this.subscribeToEndCategory();
      this.subscribeToUsersTurn();
+     if ( this.timeService.endOfACategory) {
+       this.endCategoryPageEnabled = true;
+       this.initializeEndOfCategory();
+     }
       this._animator = this.animationService.builder();
    }
 
@@ -75,14 +86,15 @@ export class CategoryComponent extends Unsubscriber implements OnInit {
          })
      );
   }
-  subscribeToEndCategory () {
-     this.subscriptions.push(
-       this.quizEventService.onEndOfCategory()
-         .subscribe(() => {
 
-         })
-     );
+  initializeEndOfCategory () {
+     const myTeam = this.quizResultService.getMyTeam();
+     this.teamTotalScore = myTeam.totalScore;
+     this.teamPosition = myTeam.position;
+     const allTeams = this.quizResultService.getAllTeamList();
+     this.teamScoresList  = allTeams.map(team => ({ teamPosition: team.position, teamTotalScore: team.totalScore, teamName: team.name}));
   }
+
   subscribeToUsersTurn () {
 
     let usersNotTurned = true;

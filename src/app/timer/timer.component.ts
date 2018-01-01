@@ -66,7 +66,7 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
       .setDelay(100)
       .setDuration(700)
       .hide(this._elementRef.nativeElement)
-      .then(() => { this.router.navigate(['category']);  console.log('Timer Page is Out for now'); })
+      .then(() => { this.timeService.endOfACategory = false; this.router.navigate(['category']);  console.log('Timer Page is Out for now'); })
       .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
 
   }

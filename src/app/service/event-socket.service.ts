@@ -265,6 +265,7 @@ export class EventSocketService extends Unsubscriber {
         break;
 
       case NavEventRegistry.UPDATE_SCORE:
+        console.log(`=> Update teams details and information => ${JSON.stringify(message.teams)}`);
         this.quizResultService.updateTeamList(message.teams);
         break;
 

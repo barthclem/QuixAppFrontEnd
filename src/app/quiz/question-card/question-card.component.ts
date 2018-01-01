@@ -9,6 +9,7 @@ import {TimerInterface} from '../../helpers/timeInterface';
 import {AnimationService} from 'css-animator';
 import {AnimationBuilder} from 'css-animator';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {QuizResultService} from "../../service/quiz-result.service";
 
 @Component({
   selector: 'app-question-card',
@@ -34,7 +35,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   constructor(
     private animationService: AnimationService, private _elementRef: ElementRef,
     private router: Router, private timeService: TimeService,
-    private quizEventService: QuizEventService, private quizService: QuizService ) {
+    private quizEventService: QuizEventService, private quizService: QuizService) {
     super();
     this.subscribeQuestionOptionPicked();
     this.subscribeToStartBonus();
@@ -207,6 +208,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
       this.quizEventService.onEndOfCategory()
         .subscribe(() => {
           this.fadeOut();
+          this.timeService.endOfACategory = true;
           this.router.navigate(['category']);
         })
     );

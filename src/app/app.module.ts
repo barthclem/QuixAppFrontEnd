@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatListModule, MatIconModule, MatTabsModule, MatToolbarModule, MatCardModule, MatSlideToggleModule,
   MatButtonModule, MatMenuModule, MatDialogModule, MatInputModule, MatCheckboxModule, MatSelectModule,
-  MatFormFieldModule, MatGridListModule
+  MatFormFieldModule, MatGridListModule, MatTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -99,7 +99,7 @@ const appRoutes: Routes = [
   imports: [
     AnimatorModule, BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, FlexLayoutModule,
     MatListModule, MatGridListModule, MatTabsModule, MatToolbarModule, MatIconModule, MatCardModule,
-    MatSlideToggleModule, MatButtonModule, MatMenuModule, MatDialogModule, MatFormFieldModule,
+    MatSlideToggleModule, MatButtonModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatTableModule,
     MatInputModule, MatCheckboxModule, MatSelectModule, RouterModule.forRoot(appRoutes),
   ],
   providers: [ ChatService, WebsocketService, NavService,
