@@ -188,7 +188,7 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
         .subscribe(questionNumber => {
           if (questionNumber !== -1) {
             console.log(` The number of question selected is => ${questionNumber}`);
-            //this.navigateToQuiz();
+            // this.navigateToQuiz();
           }
         })
     );
