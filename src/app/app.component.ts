@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { MatIconRegistry, MatDialog } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {MatIconRegistry, MatDialog} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 import {DialogComponent} from './dialog/dialog.component';
 
 import 'rxjs/add/operator/filter';
@@ -18,8 +18,9 @@ export class AppComponent extends Unsubscriber {
   displayTeamMembers: Observable<boolean>;
   displayTeamsScore: Observable<boolean>;
   displaySBars: Observable<boolean>;
-   displayUserInfo = false;
-   userDetails: any;
+  displayQuixMainApp: Observable<boolean>;
+  displayUserInfo = false;
+  userDetails: any;
 
   constructor(private pageService: PageService) {
     super();
@@ -28,6 +29,7 @@ export class AppComponent extends Unsubscriber {
     this.displayTeamMembers = this.pageService.displayTeamMembers;
     this.displayTeamsScore = this.pageService.displayTeamScore;
     this.displaySBars = this.pageService.displaySideBars;
+    this.displayQuixMainApp = this.pageService.quixMainApp;
   }
 
   subscribeToUserInfoUpdate() {
@@ -36,7 +38,6 @@ export class AppComponent extends Unsubscriber {
         this.displayUserInfo = infoUpdate;
       }));
   }
-
 
 
 }

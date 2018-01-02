@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {TimeService} from '../../service/time.service';
 import {Router} from '@angular/router';
 import {AnimationService, AnimationBuilder} from 'css-animator';
@@ -9,14 +9,14 @@ import {QChooserService} from './service/q-chooser.service';
 import {QuizEventService} from '../../service/quiz-pane.service';
 import {Unsubscriber} from '../../service/Unsubscriber';
 import {QuizService} from '../../service/quiz.service';
-import {PageService} from "../../service/page.service";
+import {PageService} from '../../service/page.service';
 
 @Component({
   selector: 'app-choser',
   templateUrl: './choser.component.html',
   styleUrls: ['./choser.component.css']
 })
-export class ChoserComponent extends Unsubscriber implements OnInit {
+export class ChoserComponent extends Unsubscriber implements OnInit, OnDestroy {
 
   private _animator: AnimationBuilder;
   private questionPicked = new BehaviorSubject(false);
@@ -50,8 +50,7 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
     this.teamTurn = this.quizService.teamTurn;
     this.activeTeam = this.quizService.teamName;
 
-    this.pageService.setPageTitle('Question Selection');
-    this.pageService.enableSideBarsDisplay(true);
+    this.initiatePage();
     if (!this.teamTurn) {
       this.subscribeToQuestionSelected();
       this.subscribeToTeamPickedQuestion();
@@ -193,4 +192,17 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
         })
     );
   }
+
+  initiatePage (): void {
+    this.pageService.enableSideBarsDisplay(true);
+    this.pageService.setPageTitle('Question Selection');
+  }
+  destroyInitPageSettings () {
+    this.pageService.destroyPageView();
+  }
+
+  ngOnDestroy() {
+    this.destroyInitPageSettings();
+  }
+
 }

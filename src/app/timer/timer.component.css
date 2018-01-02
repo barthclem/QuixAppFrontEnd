@@ -6,11 +6,31 @@
 
 /*--------Timer Section --------*/
 
+
+.pickQueInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  float: left;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
+
+
+
 .timerSpace {
   display: inline-block;
   width: 60%;
   margin-left: 20%;
-  padding: 30px;
+  padding: 0 30px;
 }
 
 .itime {
