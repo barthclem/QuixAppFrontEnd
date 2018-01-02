@@ -9,6 +9,7 @@ import {TimerInterface} from '../../helpers/timeInterface';
 import {AnimationService} from 'css-animator';
 import {AnimationBuilder} from 'css-animator';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {QuizResultService} from "../../service/quiz-result.service";
 
 @Component({
   selector: 'app-question-card',
@@ -19,7 +20,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
 
 
   private _markedAnswer = -1;
-  private answerPicked = new BehaviorSubject(false);
+  public answerPicked = new BehaviorSubject(false);
   public question: Question;
   public time: TimerInterface;
   private timeSubscription: Subscription;
@@ -29,22 +30,25 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   public bonusSession: boolean;
   private timeToAnswer: number;
   public selectedOptionIndex = -1;
+  public remainingSec: string;
 
   private _animator: AnimationBuilder;
   constructor(
     private animationService: AnimationService, private _elementRef: ElementRef,
     private router: Router, private timeService: TimeService,
-    private quizEventService: QuizEventService, private quizService: QuizService ) {
+    private quizEventService: QuizEventService, private quizService: QuizService) {
     super();
     this.subscribeQuestionOptionPicked();
     this.subscribeToStartBonus();
     this.subscribeToAnswerLoaded();
     this.subscribeToGoToPickQuestion();
     this.subscribeToEndCategory();
+    this.subscribeToDurationUpdate();
     this._animator = animationService.builder();
     this.time = this.timeService.getTimer();
     this.teamTurn = this.quizService.teamTurn;
-    this.question = this.quizService.currentQuestion;
+    // this.question = this.quizService.currentQuestion;
+    this.question = this.quizService.getAQuestion();
     this.questionSession = true;
     this.startQuestionCountDownTimer();
     this.quizService.setMessage('It is your turn to pick a question');
@@ -207,10 +211,21 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
       this.quizEventService.onEndOfCategory()
         .subscribe(() => {
           this.fadeOut();
+          this.timeService.endOfACategory = true;
           this.router.navigate(['category']);
         })
     );
   }
+
+  subscribeToDurationUpdate() {
+    this.subscriptions.push(
+      this.timeService.getRemainingDuration()
+        .subscribe((time) => {
+          this.remainingSec = `${time.seconds}`;
+        })
+    );
+  }
+
 
   setNotificationMessage( message: string) {
     this.quizService.setMessage(message);

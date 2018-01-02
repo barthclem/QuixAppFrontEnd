@@ -1,122 +1,83 @@
-:host {
-  display: flex;
-  flex: 1;
-}
-.question-status {
-  z-index: 100;
-  position: absolute;
-  width: 7rem;
-  left: 50%;
-  margin-left: -3.5rem;
-  bottom: 6rem;
+
+/*------------- Question Page ---------*/
+
+
+.quebody {
+  background: rgba(190, 190, 190, 0.1);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: block;
+  width: 90%;
+  clear: both;
+  margin-top: 20px;
+  margin-left: 5%;
+  padding: 20px;
+  overflow: auto;
 }
 
-.question-status img {
-  width: 7rem;
+.que_content {
+  display: inline-block;
+  width: 50%;
+  margin-left: 5%;
+  float: left;
 }
 
-audio {
-  display: none;
-}
-
-.card-panel {
-  margin-top: 1.5em;
-}
-
-.card-panel button i {
-  line-height: 15px
-}
-
-.card-panel i {
-  padding: 12px;
-  font-size: 24px;
-}
-
-.card-panel .row.valign-wrapper {
-  margin-bottom: 0;
-}
-
-.row.answers {
-  line-height: 4;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.song-preview button {
-  padding: 0 1rem;
-}
-
-.question-title {
-  padding-left: 1.5rem;
-}
-
-@media only screen and (min-width: 992px) {
-  .row.answers .col:nth-child(even) {
-    text-align: right;
-    padding-right: 15%;
-    direction: rtl;
-  }
-  .row.answers .col:nth-child(even) [type="checkbox"]+label {
-    padding-right: 35px;
-    background-color: #fff;
-  }
-  .row.answers .col:nth-child(even) [type="checkbox"]+label:before, .row.answers .col:nth-child(even) [type="checkbox"]:not(.filled-in)+label:after {
-    left: auto;
-    right: 0;
-  }
-  .row.answers .col:nth-child(even) [type="checkbox"]:checked+label:before {
-    right: 10px !important;
-  }
-  .row.answers .col:nth-child(odd) {
-    text-align: left;
-    padding-left: 12%;
-  }
-  .row.answers .col {
-    white-space: nowrap;
-    overflow: visible;
-    text-overflow: ellipsis;
-  }
-  .song-preview button {
-    padding: 0 15px;
-  }
-  .song-preview button {
-    padding: 0 2rem;
-  }
-  .question-title {
-    padding-left: 0;
-  }
-}
-
-.answers {
-  padding-bottom: 4.5em;
-}
-
-.next {
-  position: absolute;
-  width: 200px;
-  left: 50%;
-  margin-left: -100px;
-  margin-top: -5em;
+.queInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  float: left;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
   text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.song-preview {
-  margin-top: 10px;
+.remainingTime{
+  float: right;
+  color: #ed5d4f;
 }
 
-.album-cover {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto;
-  margin-top: 10px;
+
+.durationRem {
+  padding: 0 20px;
+  animation:  blink 1s linear 35s 10;
+  -webkit-animation: blink 1s linear 35s  10;
 }
 
-.question-category{
+@keyframes blink { 50% { color: transparent; } }
+@-webkit-keyframes blink { 50% { color: transparent; } }
+
+.quePanel {
+  width: 90%;
+  margin: 0 auto 20px;
   text-align: center;
-  align-self: center;
-  color: #df5142;
-  font-size:24px;
-  font-weight:300
+  padding: 20px;
+  background: #fff;
+  color: #000;
+  font-size: 150%;
+  line-height: 145%;
+  font-family: roboto, cursive;
+  align-content: center;
+  border-radius: 8px;
+  box-shadow: 5px 5px 3px 0 #555;
+}
+
+.queNumber {
+  float: left;
+  padding-left: 20px;
+}
+
+
+input[type=checkbox] {
+  display: inline-block;
+  line-height: 145%;
+  transition: all 0.5s;
+
+}
+
+input[type=checkbox]~label {
+  font-size: 80%;
 }

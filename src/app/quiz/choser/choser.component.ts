@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {TimeService} from '../../service/time.service';
 import {Router} from '@angular/router';
 import {AnimationService, AnimationBuilder} from 'css-animator';
@@ -9,13 +9,14 @@ import {QChooserService} from './service/q-chooser.service';
 import {QuizEventService} from '../../service/quiz-pane.service';
 import {Unsubscriber} from '../../service/Unsubscriber';
 import {QuizService} from '../../service/quiz.service';
+import {PageService} from '../../service/page.service';
 
 @Component({
   selector: 'app-choser',
   templateUrl: './choser.component.html',
   styleUrls: ['./choser.component.css']
 })
-export class ChoserComponent extends Unsubscriber implements OnInit {
+export class ChoserComponent extends Unsubscriber implements OnInit, OnDestroy {
 
   private _animator: AnimationBuilder;
   private questionPicked = new BehaviorSubject(false);
@@ -30,6 +31,7 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
   public activeTeam: string;
 
   constructor(
+    private pageService: PageService,
     private timeService: TimeService,
     private router: Router,
     private animationService: AnimationService,
@@ -47,14 +49,14 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
     this.time = this.timeService.getTimer();
     this.teamTurn = this.quizService.teamTurn;
     this.activeTeam = this.quizService.teamName;
+
+    this.initiatePage();
     if (!this.teamTurn) {
       this.subscribeToQuestionSelected();
       this.subscribeToTeamPickedQuestion();
     } else {
       this.subscribeToTeamMatePickedQuestion();
     }
-    console.log(`User's turn: ${this.quizService.teamTurn}`);
-    console.log(`Question Tag: ${JSON.stringify(this.questionTags)}`);
   }
 
   ngOnInit() {
@@ -102,8 +104,8 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
       .setDelay(100)
       .setDuration(700)
       .hide(this._elementRef.nativeElement)
-      .then(() => { console.log('Page is loaded'); })
-      .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
+      .then(() => { this.router.navigate(['quiz']); console.log('Left the Question Picking Page'); })
+      .catch( error => { console.log(`fade Out - Error using Animation => ${error}`); });
 
   }
 
@@ -125,7 +127,6 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
             console.log(`CHOSER COMPONENT: Question downloaded from the net: ${JSON.stringify(question)}`);
             this.quizService.currentQuestion = question;
             this.fadeOut();
-            this.navigateToQuiz();
           }
 
         })
@@ -186,9 +187,22 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
         .subscribe(questionNumber => {
           if (questionNumber !== -1) {
             console.log(` The number of question selected is => ${questionNumber}`);
-            //this.navigateToQuiz();
+            // this.navigateToQuiz();
           }
         })
     );
   }
+
+  initiatePage (): void {
+    this.pageService.enableSideBarsDisplay(true);
+    this.pageService.setPageTitle('Question Selection');
+  }
+  destroyInitPageSettings () {
+    this.pageService.destroyPageView();
+  }
+
+  ngOnDestroy() {
+    this.destroyInitPageSettings();
+  }
+
 }

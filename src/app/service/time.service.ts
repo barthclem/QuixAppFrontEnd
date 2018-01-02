@@ -7,7 +7,6 @@ import {Time} from '../helpers/Timer';
 @Injectable()
 export class TimeService {
 
-
   private _timeForQuestionExpired = new Subject<void>();
   private _timeForQuestionSelectionExpired = new Subject<void>();
   private _timeForBonusQuestionExpired = new Subject<void>();
@@ -33,6 +32,8 @@ export class TimeService {
   private _localTimerStarted = false;
   private _durationNumber: number;
   private onlineStarterTime: number;
+
+  private _endOfACategory: boolean;
 
   constructor() {
   }
@@ -202,6 +203,15 @@ public onEntryOnlinePageTimerResponse () {
   getTimer () {
     return new Time();
   }
+
+  get endOfACategory(): boolean {
+    return this._endOfACategory;
+  }
+
+  set endOfACategory(value: boolean) {
+    this._endOfACategory = value;
+  }
+
 
   setTime(time: number) {
     this.currentTime.minutes = this.getMinute(time);

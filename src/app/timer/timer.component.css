@@ -1,87 +1,49 @@
-:host {
-  display: flex;
-  flex: 1;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;;
 }
 
-.freshBg{
-  background-image: url("../../assets/doodles.png");
-  padding: 20px;
-}
+/*--------Timer Section --------*/
 
-.timerBg {
-}
 
-#timeString {
-  font-family: "Comic Sans MS";
-  font-style: italic;
-  font-size: large;
-  color: #df5142;
-
-}
-
-#title{
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 30px;
-  text-align: center;
-  color: lightsalmon;
-  border-bottom: 2px solid #bfbfbf ;
-}#title{
-   font-family: Roboto, Arial, sans-serif;
-   font-size: 30px;
-   text-align: center;
-   color: lightsalmon;
-   border-bottom: 2px solid #bfbfbf ;
- }
-
-.timeInput {
-  margin: 10px;
-  clear: both;
-}
-
-body{
-  text-align: center;
-  background: #00ECB9;
-  font-family: sans-serif;
-  font-weight: 100;
-}
-
-h1{
-  color: #396;
-  font-weight: 100;
-  font-size: 40px;
-  margin: 40px 0px 20px;
-}
-
-#clockdiv{
-  font-family: sans-serif;
-  color: #fff;
-  display: inline-block;
-  font-weight: 100;
-  text-align: center;
-  font-size: 30px;
-}
-
-#clockdiv > div{
+.pickQueInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  float: left;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
   padding: 10px;
-  border-radius: 3px;
-  background: #df5142;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
+
+
+
+.timerSpace {
   display: inline-block;
+  width: 60%;
+  margin-left: 20%;
+  padding: 0 30px;
 }
 
-#clockdiv div > span{
-  padding: 15px;
-  border-radius: 3px;
-  background: #ff8c64;
+.itime {
+  background: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
   display: inline-block;
-}
+  width: 90%;
+  clear: both;
+  margin-top: 20px;
+  margin-left: 5%;
+  padding: 10%;
+  color: #e72c3c;
+  text-align: center;
+  font-size: 400%;
 
-.smalltext{
-  padding-top: 5px;
-  font-size: 16px;
-}
-
-
-.eventsParent {
-  height: 100%;
-  overflow-wrap: normal;
 }

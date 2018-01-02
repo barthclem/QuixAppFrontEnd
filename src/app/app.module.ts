@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatListModule, MatIconModule, MatTabsModule, MatToolbarModule, MatCardModule, MatSlideToggleModule,
   MatButtonModule, MatMenuModule, MatDialogModule, MatInputModule, MatCheckboxModule, MatSelectModule,
-  MatFormFieldModule, MatGridListModule
+  MatFormFieldModule, MatGridListModule, MatTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -46,6 +46,11 @@ import {EventSocketService} from './service/event-socket.service';
 import { CategoryComponent } from './category/category.component';
 import { StageComponent } from './stage/stage.component';
 import {QuizResultService} from './service/quiz-result.service';
+import { HeaderComponent } from './header/header.component';
+import {PageService} from './service/page.service';
+import { StartPageComponent } from './start-page/start-page.component';
+import { IStartComponent } from './i-start/i-start.component';
+import { LeaderBoardComponent } from './leader-board/leader-board.component';
 
 
 const appRoutes: Routes = [
@@ -54,6 +59,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'fresh', component: FreshPageComponent
+  },
+  {
+    path: 'start', component: StartPageComponent
+  },
+  {
+    path: 'istart', component: IStartComponent
   },
   {
     path: 'quiz', component: QuizComponent
@@ -94,16 +105,20 @@ const appRoutes: Routes = [
     ChoserComponent,
     FreshDialogComponent,
     CategoryComponent,
-    StageComponent
+    StageComponent,
+    HeaderComponent,
+    StartPageComponent,
+    IStartComponent,
+    LeaderBoardComponent
   ],
   imports: [
     AnimatorModule, BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, FlexLayoutModule,
     MatListModule, MatGridListModule, MatTabsModule, MatToolbarModule, MatIconModule, MatCardModule,
-    MatSlideToggleModule, MatButtonModule, MatMenuModule, MatDialogModule, MatFormFieldModule,
+    MatSlideToggleModule, MatButtonModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatTableModule,
     MatInputModule, MatCheckboxModule, MatSelectModule, RouterModule.forRoot(appRoutes),
   ],
   providers: [ ChatService, WebsocketService, NavService,
-    QuizEventService, TimeService, QChooserService, QuizService, QuizResultService, EventSocketService],
+    QuizEventService, TimeService, QChooserService, QuizService, QuizResultService, EventSocketService, PageService],
   entryComponents: [DialogComponent, FreshDialogComponent],
   bootstrap: [AppComponent]
 })

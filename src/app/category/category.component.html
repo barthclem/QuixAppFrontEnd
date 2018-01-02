@@ -1,54 +1,140 @@
-<div fxFlexFill fxLayout="row" fxFlexAlign="center center" class="freshBg">
-  <mat-card  class ="eventsParent"
-             fxFlexOffset="10" fxFlex="80" fxFlexAlign="center">
-    <mat-card-header>
-      <h5 id="title" fxFlex>Quix Categories</h5>
-    </mat-card-header>
-    <mat-card-content>
-      <div fxFlex fxLayout="column"  class="freshPage" *ngIf="!endCategoryPageEnabled; else endPage">
-        <p > Welcome to New Category </p>
-        <mat-card >
-          <mat-card-header fxLayoutAlign="center">
-            <mat-card-title >
-              <p class="startP" align="center"> {{categoryName}} Category Information </p>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content fxLayoutAlign="center" fxFlexAlign="center">
-            <mat-list    fxLayout="column">
-              <mat-list-item fxFlex   fxLayout="row" fxLayoutGap="10px">
-                <p class="startP"  fxFlex="30">Rounds :</p>
-                <p class="startP"  fxFlex="70">{{numberOfRounds}}</p>
-              </mat-list-item>
-              <mat-list-item fxFlex fxLayout="row">
-                <p class="startP"  fxFlex="30">Participating Teams :</p>
-                <p class="startP"  fxFlex="70">{{teams.toString()}}</p>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </mat-card-content>
-  </mat-card>
+<div  *ngIf="!endCategoryPageEnabled; else endPage">
+
+  <div class="summary_content">
+    <div class="pickQueInfo">
+      <h2>End of Category <span class="duration">English</span> Summary</h2>
+    </div>
+    <div class="scoreBoard">
+      <h3>
+        <img src="img/cup.png" alt="cup logo" class=""/>
+        Leader Board
+      </h3>
+      <ol class="teamList">
+        <li>
+          <mark>Team Hayes</mark>
+          <small>315</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>310</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>300</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>325</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>355</small>
+        </li>
+      </ol>
+    </div>
+  </div>
 </div>
-
-
-<ng-template #endPage>
-  <div fxFlex fxLayout="column"  class="freshPage">
-    <mat-card >
-      <mat-card-header fxLayoutAlign="center">
-        <mat-card-title >
-          <p class="startP" align="center"> Quix Rules and Regulation </p>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item >
-            {{categoryName}}
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+<ng-template  #endPage>
+  <div class="summary_content">
+    <div class="pickQueInfo">
+      <h2>End of Category <span class="duration">English</span> Summary</h2>
+    </div>
+    <div class="scoreBoard">
+      <h3>
+        <img src="img/cup.png" alt="cup logo" class=""/>
+        Leader Board
+      </h3>
+      <ol class="teamList">
+        <li>
+          <mark>Team Hayes</mark>
+          <small>315</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>310</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>300</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>325</small>
+        </li>
+        <li>
+          <mark>Team Hayes</mark>
+          <small>355</small>
+        </li>
+      </ol>
+    </div>
   </div>
 </ng-template>
+
+
+
+<!--<div fxFlexFill fxLayout="row" fxFlexAlign="center center" class="freshBg">-->
+  <!--<mat-card  class ="eventsParent"-->
+             <!--fxFlexOffset="10" fxFlex="80" fxFlexAlign="center">-->
+    <!--<mat-card-header>-->
+      <!--<h5 id="title" fxFlex>Quix Categories</h5>-->
+    <!--</mat-card-header>-->
+    <!--<mat-card-content>-->
+      <!--<div fxFlex fxLayout="column"  class="freshPage" *ngIf="!endCategoryPageEnabled; else endPage">-->
+        <!--<p > Welcome to New Category </p>-->
+        <!--<mat-card >-->
+          <!--<mat-card-header fxLayoutAlign="center">-->
+            <!--<mat-card-title >-->
+              <!--<p class="startP" align="center"> {{categoryName}} Category Information </p>-->
+            <!--</mat-card-title>-->
+          <!--</mat-card-header>-->
+          <!--<mat-card-content fxLayoutAlign="center" fxFlexAlign="center">-->
+            <!--<mat-list    fxLayout="column">-->
+              <!--<mat-list-item fxFlex   fxLayout="row" fxLayoutGap="10px">-->
+                <!--<p class="startP"  fxFlex="30">Rounds :</p>-->
+                <!--<p class="startP"  fxFlex="70">{{numberOfRounds}}</p>-->
+              <!--</mat-list-item>-->
+              <!--<mat-list-item fxFlex fxLayout="row">-->
+                <!--<p class="startP"  fxFlex="30">Participating Teams :</p>-->
+                <!--<p class="startP"  fxFlex="70">{{teams.toString()}}</p>-->
+              <!--</mat-list-item>-->
+            <!--</mat-list>-->
+          <!--</mat-card-content>-->
+        <!--</mat-card>-->
+      <!--</div>-->
+    <!--</mat-card-content>-->
+  <!--</mat-card>-->
+<!--</div>-->
+
+
+<!--<ng-template #endPage>-->
+  <!--<div fxFlex fxLayout="column"  class="freshPage">-->
+    <!--<mat-card >-->
+      <!--<mat-card-header fxLayoutAlign="center">-->
+        <!--<mat-card-title >-->
+          <!--<p class="startP" align="center"> End of Category {{categoryName}} </p>-->
+        <!--</mat-card-title>-->
+      <!--</mat-card-header>-->
+      <!--<mat-card-content>-->
+        <!--<div id="myScoreSummary">-->
+          <!--<h5> My Team Score Summary</h5>-->
+          <!--<p>Position : {{teamPosition}}  TotalScore: {{teamTotalScore}}</p>-->
+        <!--</div>-->
+          <!--<table>-->
+            <!--<tr>-->
+              <!--<th>Position</th>-->
+              <!--<th>Team Name</th>-->
+              <!--<th>Score</th>-->
+              <!--</tr>-->
+            <!--<tr *ngFor="let team of teamScoresList">-->
+              <!--<td>{{team.teamPosition}}</td>-->
+            <!--<td>{{team.teamName}}</td>-->
+            <!--<td>{{team.teamTotalScore}}</td>-->
+            <!--</tr>-->
+          <!--</table>-->
+
+      <!--</mat-card-content>-->
+    <!--</mat-card>-->
+  <!--</div>-->
+<!--</ng-template>-->
 
 

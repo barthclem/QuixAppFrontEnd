@@ -1,0 +1,72 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;;
+}
+
+/*-------Team Members Section-----*/
+.teamMembers {
+  display: inline-block;
+  width: 20%;
+  background: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
+  float: right
+}
+
+.teamMembers h3 {
+  font-weight: 200;
+  background-color: rgba(190, 190, 190, 0.39);
+  line-height: 145%;
+  box-shadow: 1px 3px 2px rgba(255, 255, 255, 0.22);
+  padding: 2px 10px;
+}
+
+.teamMembers ul {
+  list-style: none;
+  padding: 2px 10px;
+  line-height: 145%;
+}
+
+.teamMembers li {
+  list-style: none;
+  padding: 12px 10px;
+  line-height: 145%;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed rgba(137, 137, 137, 0.62);
+  position: relative;
+}
+.teamMembers li p {
+  display: inline-block;
+  width: 50%;
+  vertical-align: middle;
+  position: absolute;
+  top:5px;
+  background: rgba(110, 191, 151, 0.83);
+  border-radius: 9px;
+  padding: 5px;
+}
+.teamMembers li p.offline {
+
+  color: #fff;
+  background: #e74c3c;
+
+}
+
+.person-icon {
+  font-size: 25px;
+  margin-right: 20px;
+  border-radius: 50%;
+  padding: 5px;
+  width: 20%;
+}
+
+.online {
+  color: rgba(110, 191, 151, 0.83);
+  border: 1px solid rgba(110, 191, 151, 0.83);
+}
+
+.offline {
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+

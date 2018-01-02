@@ -1,45 +1,79 @@
-<div fxFlexFill  fxLayoutAlign="center center" >
-  <mat-card fxFlexFill *ngIf="teamTurn; else waitPage">
-    <mat-card-title>
-      <div fxLayout="row" id="clockdiv">
-        <div class="timeInput ">
-          <span class="timeInput minutes">{{time.minutes}}</span>
-          <div class="smalltext">Minutes</div>
-        </div>
-        <div class="timeInput ">
-          <span class=" timeInput seconds">{{time.seconds}}</span>
-          <div class="smalltext">Seconds</div>
-        </div>
-      </div></mat-card-title>
-    <mat-card-content >
-      <div class="pickedNotific" *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</div>
-      <mat-grid-list  [ngClass]="aTeamHasPickedQue ? 'disableTags': ''" cols="4" gutterSize="4px" rowHeight="100px">
-        <mat-grid-tile #tag class="questionTag" *ngFor="let button of questionTags | async"
-                         [style.background]="button.available ? 'red' : 'blue'"
-        (click) = selectAQuestion(button.questionNumber) >
-            {{button.questionNumber}}
-        </mat-grid-tile>
-      </mat-grid-list>
-    </mat-card-content>
-  </mat-card>
+<div  *ngIf="teamTurn; else waitPage">
 
-
-  <ng-template #waitPage>
-    <div fxFlex fxLayout="column"  class="freshPage">
-      <mat-card >
-        <mat-card-header fxLayoutAlign="center">
-          <mat-card-title >
-            <p class="startP" align="center"> Quix Choose A Question Page </p>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="pickedNotific" *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</div>
-          <mat-list>
-            <mat-list-item>
-              <h1>Wait for {{activeTeam}} to choose a question</h1>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
+  <div class="main_content">
+    <div class="pickQueInfo">
+      <h2 *ngIf="!aTeamHasPickedQue">Team Hayes, choose a question in <span class="duration">45 sec</span></h2>
+      <h2 *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</h2>
     </div>
-  </ng-template>
+    <div class="options">
+      <div #tag class="option"*ngFor="let button of questionTags | async"
+           [ngClass]="button.available? 'notClicked': 'clicked'"
+           (click) = selectAQuestion(button.questionNumber) >
+        {{button.questionNumber}}
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+<ng-template  #waitPage>
+  <div class="main_content">
+    <div class="pickerMsg">
+      Wait for {{activeTeam}} to choose a question<br>in
+      <span class="countdown">{{time.seconds}} <small>secs</small></span>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<!--<div fxFlexFill  fxLayoutAlign="center center" >-->
+  <!--<mat-card fxFlexFill *ngIf="teamTurn; else waitPage">-->
+    <!--<mat-card-title>-->
+      <!--<div fxLayout="row" id="clockdiv">-->
+        <!--<div class="timeInput ">-->
+          <!--<span class="timeInput minutes">{{time.minutes}}</span>-->
+          <!--<div class="smalltext">Minutes</div>-->
+        <!--</div>-->
+        <!--<div class="timeInput ">-->
+          <!--<span class=" timeInput seconds">{{time.seconds}}</span>-->
+          <!--<div class="smalltext">Seconds</div>-->
+        <!--</div>-->
+      <!--</div></mat-card-title>-->
+    <!--<mat-card-content >-->
+      <!--<div class="pickedNotific" *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</div>-->
+      <!--<mat-grid-list  [ngClass]="aTeamHasPickedQue ? 'disableTag': ''" cols="4" gutterSize="4px" rowHeight="100px">-->
+        <!--<mat-grid-tile #tag class="questionTag"  *ngFor="let button of questionTags | async"-->
+                       <!--[ngClass]="button.available? '': 'questionTag'"-->
+                         <!--[style.background]="button.available ? 'red' : '#ffcd9c'"-->
+        <!--(click) = selectAQuestion(button.questionNumber) >-->
+            <!--{{button.questionNumber}}-->
+        <!--</mat-grid-tile>-->
+      <!--</mat-grid-list>-->
+    <!--</mat-card-content>-->
+  <!--</mat-card>-->
+
+
+  <!--<ng-template #waitPage>-->
+    <!--<div fxFlex fxLayout="column"  class="freshPage">-->
+      <!--<mat-card >-->
+        <!--<mat-card-header fxLayoutAlign="center">-->
+          <!--<mat-card-title >-->
+            <!--<p class="startP" align="center"> Quix Choose A Question Page </p>-->
+          <!--</mat-card-title>-->
+        <!--</mat-card-header>-->
+        <!--<mat-card-content>-->
+          <!--<div class="pickedNotific" *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</div>-->
+          <!--<mat-list>-->
+            <!--<mat-list-item>-->
+              <!--<h1>Wait for {{activeTeam}} to choose a question</h1>-->
+            <!--</mat-list-item>-->
+          <!--</mat-list>-->
+        <!--</mat-card-content>-->
+      <!--</mat-card>-->
+    <!--</div>-->
+  <!--</ng-template>-->
+<!--</div>-->

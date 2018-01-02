@@ -1,5 +1,10 @@
- <div class="container">
-    <router-outlet>
-    </router-outlet>
-  </div>
+   <app-header  [displayUserInfo] = displayUserInfo  [pageTitle] = "pageTitle | async"  [userDetails]= userDetails ></app-header>
+
+   <div class="multi_content clearfix" [ngClass]="{'quixPage': (displayQuixMainApp | async)}">
+     <app-leader-board *ngIf="(displayTeamsScore | async) || ( displaySBars | async)"></app-leader-board>
+     <router-outlet>
+     </router-outlet>
+     <app-online-users *ngIf="(displayTeamMembers | async) || ( displaySBars | async)"></app-online-users>
+   </div>
+
 

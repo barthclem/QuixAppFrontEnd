@@ -1,32 +1,42 @@
 
-<div fxFlexFill class="freshBg"  fxLayout="row" fxLayoutAlign="center center" >
-  <mat-card fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10" fxLayoutAlign="space-evenly center" fxLayoutWrap>
-    <mat-card-header>
-      <h1 id="title" fxFlex.gt-lg="" fxFlexAlign.lt-lg="center" fxFlexAlign.gt-md="center"> Quix Timer</h1>
-    </mat-card-header>
+<div class="timerSpace">
+    <div class="pickQueInfo">
+      <h2>Quix Competition starts in </h2>
+    </div>
+    <div class="itime">
+      {{minutes}} <small>
+      min</small> : {{seconds}} <small>secs</small></div>
+  </div>
+
+<!--</div>-->
+<!--<div fxFlexFill class="freshBg"  fxLayout="row" fxLayoutAlign="center center" >-->
+  <!--<mat-card fxFlexAlign="center" fxFlexFill fxLayout="column" fxLayoutGap="10" fxLayoutAlign="space-evenly center" fxLayoutWrap>-->
+    <!--<mat-card-header>-->
+      <!--<h1 id="title" fxFlex.gt-lg="" fxFlexAlign.lt-lg="center" fxFlexAlign.gt-md="center"> Quix Timer</h1>-->
+    <!--</mat-card-header>-->
 
 
-    <mat-card-content fxFlex fxFlexAlign="center">
-      <mat-card>
+    <!--<mat-card-content fxFlex fxFlexAlign="center">-->
+      <!--<mat-card>-->
 
-        <mat-card-content fxLayoutGap="10" fxLayout="column" fxLayoutAlign="space-evenly center" class="timerBg" >
-          <h3 fxFlex fxFlexAlign="center"> Remaining time  </h3>
-          <div fxLayout="row" id="clockdiv">
-            <div class="timeInput ">
-              <span class="timeInput minutes">{{minutes}}</span>
-              <div class="smalltext">Minutes</div>
-            </div>
-            <div class="timeInput ">
-              <span class=" timeInput seconds">{{seconds}}</span>
-              <div class="smalltext">Seconds</div>
-            </div>
-          </div>
+        <!--<mat-card-content fxLayoutGap="10" fxLayout="column" fxLayoutAlign="space-evenly center" class="timerBg" >-->
+          <!--<h3 fxFlex fxFlexAlign="center"> Remaining time  </h3>-->
+          <!--<div fxLayout="row" id="clockdiv">-->
+            <!--<div class="timeInput ">-->
+              <!--<span class="timeInput minutes">{{minutes}}</span>-->
+              <!--<div class="smalltext">Minutes</div>-->
+            <!--</div>-->
+            <!--<div class="timeInput ">-->
+              <!--<span class=" timeInput seconds">{{seconds}}</span>-->
+              <!--<div class="smalltext">Seconds</div>-->
+            <!--</div>-->
+          <!--</div>-->
 
-        </mat-card-content>
-      </mat-card>
-    </mat-card-content>
-  </mat-card>
+        <!--</mat-card-content>-->
+      <!--</mat-card>-->
+    <!--</mat-card-content>-->
+  <!--</mat-card>-->
 
 
-</div>
+<!--</div>-->
 

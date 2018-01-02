@@ -1,20 +1,31 @@
-mat-toolbar {
-  background-color: #ff8c64;
+/*--------- QuickBar ---------*/
+.quickBar {
+  position: absolute;
+  background-color: #fff;
+  width: 60%;
+  top: 63px;
+  margin-left:22%;
+  text-align: center;
+  padding: 4px;
+  box-shadow: 0px 2px 5px rgba(87, 86, 86, 0.74);
 }
-.toolBarTitle{
-  font-size: 15px;
-  font-family: "Lato Black", monospace;
-}
-.toolBarKey {
-  font-size: 15px;
-  font-family: "Lato Black", monospace;
+
+.quickBar .entryTitle {
+  background: #35b270;
+  border-radius: 2px;
   padding: 2px;
   margin-right: 10px;
 }
 
-.toolBarValue {
-  font-size: 15px;
-  font-family: Monaco, "Lucida Console", monospace;
+.quickBar .entryInput {
+  background: #e74c3c;
+  border-radius: 2px;
   padding: 2px;
-  margin-right: 10px;
+  margin-right: 20px;
+
+}
+
+.quickBar .roundNumber {
+  background: #e74c3c;
+  border-radius: 2px;
 }

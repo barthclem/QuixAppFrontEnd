@@ -1,68 +1,40 @@
-:host {
-  display: flex;
-  flex: 1;
-}
-
-.freshBg{
-  background-image: url("../../assets/doodles.png");
-  padding: 20px;
-  height: 100%;
-}
-
-.freshPage {
-  background-color: #ffffff;
+* {
+  padding: 0;
   margin: 0;
-  height: 100%;
+  box-sizing: border-box;
 }
 
-#title{
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 30px;
+/*--------Category Summary Score Board ------*/
+
+.pickQueInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
   text-align: center;
-  color: lightsalmon;
-  border-bottom: 2px solid #bfbfbf ;
+  border-radius: 5px;
 }
 
-p{
-  font-family:  Monaco, "Lucida Console", monospace;
-  color: dimgray;
-  font-size: 15px;
-  text-align: center;
-  margin: 10px;
+.pickQueInfo h2 {
+  font-weight: 200;
 }
 
-.eventPic {
-  margin: auto;
-  overflow: hidden;
-  width: 80px;
-  height: 80px;
-  border: 1px solid #ddd;
-  padding: 5px;
-  border-radius: 4px;
-
+.summary_content {
+  display: inline-block;
+  width: 50%;
+  margin-left: 20%;
+  float: left;
 }
 
-
-mat-card-title{
-  font-family: Monaco, "Lucida Console", monospace;
-  font-size: 20px;
-  text-align: center;
-  border-bottom: 1px solid #bfbfbf ;
-}
-
-.startP {
-  font-family: Monaco, "Lucida Console", monospace;
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.proceedButton {
-  position: absolute;
-  right: 24px;
-  margin-top: 10px;
-}
-
-.eventsParent {
-  height: 100%;
-  overflow-wrap: normal;
+.summary_content .scoreBoard {
+  width: 80% !important;
+  margin: 20px auto 20px 10%;
+  display: inline-block;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3a404d), to(#181c26));
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+  box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
 }

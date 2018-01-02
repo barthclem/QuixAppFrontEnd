@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AnimationService, AnimationBuilder} from 'css-animator';
+import {PageService} from '../service/page.service';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
 
   private _animator: AnimationBuilder;
 
-  constructor(private animationService: AnimationService) {
+  constructor(
+    private pageService: PageService,
+    private animationService: AnimationService) {
     this._animator = animationService.builder();
+    this.initiatePage();
   }
 
   ngOnInit() {
@@ -31,5 +35,17 @@ export class QuizComponent implements OnInit {
 
   }
 
+  initiatePage (): void {
+    this.pageService.isQuixMainApp(true);
+    this.pageService.enableSideBarsDisplay(true);
+    this.pageService.setPageTitle('Live Competition');
+  }
+  destroyInitPageSettings () {
+    this.pageService.destroyPageView();
+  }
+
+  ngOnDestroy() {
+    this.destroyInitPageSettings();
+}
 
 }

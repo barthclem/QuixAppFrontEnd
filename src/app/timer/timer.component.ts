@@ -3,7 +3,8 @@ import {TimeService} from '../service/time.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Unsubscriber} from '../service/Unsubscriber';
-import {AnimationService, AnimationBuilder} from "css-animator";
+import {AnimationService, AnimationBuilder} from 'css-animator';
+import {PageService} from '../service/page.service';
 
 @Component({
   selector: 'app-timer',
@@ -24,12 +25,14 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
   private _animator: AnimationBuilder;
 
   constructor(
+    private pageService: PageService,
     private timeService: TimeService,
     private router: Router,
     private animationService: AnimationService,
     private _elementRef: ElementRef
   ) {
     super();
+    this.initiatePage();
     this.subscribeToPageTimerStopped();
     this._animator = this.animationService.builder();
     console.log(`The time Service onlineTimer Started => ${this.timeService.onlineTimerStarted}`);
@@ -66,9 +69,18 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
       .setDelay(100)
       .setDuration(700)
       .hide(this._elementRef.nativeElement)
-      .then(() => { this.router.navigate(['category']);  console.log('Timer Page is Out for now'); })
+      .then(() => { this.timeService.endOfACategory = false; this.router.navigate(['category']);  console.log('Timer Page is Out for now'); })
       .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
 
+  }
+
+  initiatePage (): void {
+    console.log(`TIMER Initiate Page ---- Start Page Right Now`);
+    this.pageService.enableTeamMembersDisplay(true);
+    this.pageService.setPageTitle('Timer');
+  }
+  destroyInitPageSettings () {
+    this.pageService.destroyPageView();
   }
 
 
@@ -128,5 +140,6 @@ subscribeToPageTimerResponse() {
   }
 
   ngOnDestroy(): void {
+    this.destroyInitPageSettings();
   }
 }

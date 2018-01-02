@@ -1,22 +1,124 @@
-questionTag {
-  box-shadow: 10px 10px grey;
-}
-.questionTag:hover {
-  box-shadow: #a88680 1px 1px 1px 1px;
-  background-color: white;
-  color: white;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;;
 }
 
-disableTags {
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-  pointer-events: none;
+.big_content {
+  width: 100%;
+  margin: 4% auto;
+  line-height: 145%;
+  padding: 10px 0;
 }
 
-pickedNotific {
-  font: Helvetica, Arial, sans-serif;
-  font-size: large;
-  align-content: center;
-  color: firebrick;
-  background-color: #F5F5F5;
+.big_content p {
+  font-size: 120%;
 }
+.clearfix {
+  zoom:1;
+}
+
+.clearfix:after {
+  content: '.';
+  height: 0;
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+
+/*--------- Options ------*/
+
+.options {
+  background: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
+  display: inline-block;
+  width: 90%;
+  clear: both;
+  margin-top: 20px;
+  margin-left: 10%;
+  padding: 20px;
+  text-align: center;
+}
+
+.pickQueInfo {
+  display: block;
+  margin-left: 10%;
+  line-height: 145%;
+  float: left;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
+
+.option {
+  height: 20%;
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+  padding: 45px 30px;
+  margin-top: 20px;
+  margin-right: 25px;
+  border-radius: 50%;
+  border: 1px solid #605959;
+  background-color: rgba(1, 18, 38, 0.29);
+  transition: background-color 0.4s, font-size 0.4s;
+}
+
+.notClicked {
+  font-size: 35px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.clicked {
+  font-size: 30px;
+  opacity: 0.5;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  cursor: not-allowed;
+}
+
+.notClicked:hover {
+  font-size: 30px;
+  background-color: rgba(1, 18, 38, 0.19);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*--------- Other Team Picker Page ---------- */
+
+
+.pickerMsg {
+  background: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
+  display: inline-block;
+  width: 90%;
+  clear: both;
+  margin-left: 5%;
+  padding: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 250%;
+  font-weight: 200;
+  line-height: 145%;
+}
+
+.countdown {
+  color: #e74c3c;
+  font-weight: 300;
+  display: block;
+  animation:  blink 1s linear 5s  10;
+  -webkit-animation: blink 1s linear 5s  10;
+}
+
+.countdown small {
+  text-transform:capitalize;
+}
+
+@keyframes blink { 50% { color: transparent; } }
+@-webkit-keyframes blink { 50% { color: transparent; } }
