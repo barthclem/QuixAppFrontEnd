@@ -1,23 +1,34 @@
-mat-toolbar {
-  min-height: 35px;
-  max-height: 50px;
-  padding: 0px !important;
+
+.queNotific {
+  display: block;
+  margin-left: 28%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 145%;
+  width: 46%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
 }
 
-.toolBarTitle{
-  font-size: 15px;
-  font-family: "Lato Black", monospace;
-}
-.toolBarKey {
-  font-size: 15px;
-  font-family: "Lato Black", monospace;
-  padding: 2px;
-  margin-right: 10px;
+
+.generalInfo {
+  background-color: rgba(60, 231, 126, 0.65);
+  box-shadow: 1px 1px 10px rgba(60, 231, 126, 0.65);
 }
 
-.toolBarValue {
-  font-size: 15px;
-  font-family: Monaco, "Lucida Console", monospace;
-  padding: 2px;
-  margin-right: 10px;
+
+.bonusInfo {
+  background-color: #e74c3c;
+  box-shadow: 1px 1px 10px rgba(231, 76, 60, 0.65);
+}
+
+.answerInfo {
+  background-color: rgba(160, 45, 34, 0.87);
+  box-shadow: 1px 1px 10px rgba(160, 45, 34, 0.87);
+}
+
+
+.queInfo h2 , .queNotific h2{
+  font-weight: 100;
 }

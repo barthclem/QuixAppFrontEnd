@@ -1,37 +1,64 @@
 
-    <mat-card  fxFlexFill="" fxFlexOffset="20" fxFlex="60"  fxLayoutGap="10px">
-      <mat-card-content fxLayout="column">
-        <p  class="question-category"> Question {{question.id}} of 20 </p>
-        <div fxFlex [ngSwitch]="question.type">
-          <mat-card fxFlex="60" fxFlexOffset="20" *ngSwitchCase="0">
-              <mat-card-content>
-                <div class="row valign-wrapper">
-                  <div fxFlex="80" fxFlexOffset="10">
-                    {{ question.questionText }}
-                    <br>
-                    <div class="album-cover">
-                      <img class="circle responsive-img" src="../../../assets/winner.jpg" width="160" height="160">
-                    </div>
-                  </div>
-                </div>
-              </mat-card-content>
-          </mat-card>
-          <mat-card fxFlex="60" fxFlexOffset="20" *ngSwitchCase="1">
-            <mat-card-content>
-              <div class="row valign-wrapper">
-                <div fxFlex="80" fxFlexOffset="10">
-                  {{ question.questionText }}
-                  <br>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
+    <!--<mat-card  fxFlexFill="" fxFlexOffset="20" fxFlex="60"  fxLayoutGap="10px">-->
+      <!--<mat-card-content fxLayout="column">-->
+        <!--<p  class="question-category"> Question {{question.id}} of 20 </p>-->
+        <!--<div fxFlex [ngSwitch]="question.type">-->
+          <!--<mat-card fxFlex="60" fxFlexOffset="20" *ngSwitchCase="0">-->
+              <!--<mat-card-content>-->
+                <!--<div class="row valign-wrapper">-->
+                  <!--<div fxFlex="80" fxFlexOffset="10">-->
+                    <!--{{ question.questionText }}-->
+                    <!--<br>-->
+                    <!--<div class="album-cover">-->
+                      <!--<img class="circle responsive-img" src="../../../assets/winner.jpg" width="160" height="160">-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</mat-card-content>-->
+          <!--</mat-card>-->
+          <!--<mat-card fxFlex="60" fxFlexOffset="20" *ngSwitchCase="1">-->
+            <!--<mat-card-content>-->
+              <!--<div class="row valign-wrapper">-->
+                <!--<div fxFlex="80" fxFlexOffset="10">-->
+                  <!--{{ question.questionText }}-->
+                  <!--<br>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</mat-card-content>-->
+          <!--</mat-card>-->
+        <!--</div>-->
+        <!--<div class="row answers">-->
+          <!--<div class="col" fxFlex="50"  *ngFor="let option of question.options; let i = index">-->
+            <!--<mat-checkbox #check id="option{{question.id}}{{i}}" (change)="answerClicked(i, check.checked)"-->
+                          <!--[disabled]="(answerPicked | async) || (!teamTurn && questionSession) || (!teamBonus && bonusSession)"  [checked] = "selectedOptionIndex === i"> {{ option }}</mat-checkbox>-->
+            <!--</div>-->
+        <!--</div>-->
+      <!--</mat-card-content>-->
+    <!--</mat-card>-->
+
+
+
+      <div class="que_content">
+        <div class="queInfo">
+          <h2><span class="queNumber">Question {{question.id}} </span>
+            <span class="remainingTime"><i class="ion-clock"></i>
+            <span class="durationRem">{{remainingSec}} secs</span> </span> </h2>
         </div>
-        <div class="row answers">
-          <div class="col" fxFlex="50"  *ngFor="let option of question.options; let i = index">
-            <mat-checkbox #check id="option{{question.id}}{{i}}" (change)="answerClicked(i, check.checked)"
-                          [disabled]="(answerPicked | async) || (!teamTurn && questionSession) || (!teamBonus && bonusSession)"  [checked] = "selectedOptionIndex === i"> {{ option }}</mat-checkbox>
+        <div class="quebody">
+          <div class="quePanel">
+            <p>{{ question.questionText }}
+            </p>
+          </div>
+          <div class="answerOption"  *ngFor="let option of question.options; let i = index">
+            <label for="option{{question.id}}{{i}}" class="check-label"> {{option}} </label>
+            <div class="container" >
+              <input type="checkbox" name="2" value="Mount Kilamanjaroo"
+                     #check id="option{{question.id}}{{i}}" (change)="answerClicked(i, check.checked)"
+                     [disabled]="(answerPicked | async) || (!teamTurn && questionSession) || (!teamBonus && bonusSession)"
+                     [ngClass]="{'disabled': (answerPicked | async) || (!teamTurn && questionSession) || (!teamBonus && bonusSession)}"
+                     [checked] = "selectedOptionIndex === i"/>
+              <div class="checkmark"></div>
             </div>
+          </div>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>

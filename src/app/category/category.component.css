@@ -1,103 +1,19 @@
-:host {
-  display: flex;
-  flex: 1;
+/*--------Category Summary Score Board ------*/
+.summary_content {
+  display: inline-block;
+  width: 50%;
+  margin-left: 25%;
+  padding: 30px;
 }
 
-.freshBg{
-  background-image: url("../../assets/doodles.png");
-  padding: 20px;
-  height: 100%;
+.summary_content .scoreBoard {
+  width: 80% !important;
+  margin:20px auto;
+  margin-left: 10%;
+  display: inline-block;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3a404d), to(#181c26));
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+  box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
 }
-
-.freshPage {
-  background-color: #ffffff;
-  margin: 0;
-  height: 100%;
-}
-
-#title{
-  font-family: Roboto, Arial, sans-serif;
-  font-size: 30px;
-  text-align: center;
-  color: lightsalmon;
-  border-bottom: 2px solid #bfbfbf ;
-}
-
-p{
-  font-family:  Monaco, "Lucida Console", monospace;
-  color: dimgray;
-  font-size: 15px;
-  text-align: center;
-  margin: 10px;
-}
-
-.eventPic {
-  margin: auto;
-  overflow: hidden;
-  width: 80px;
-  height: 80px;
-  border: 1px solid #ddd;
-  padding: 5px;
-  border-radius: 4px;
-
-}
-
-
-mat-card-title{
-  font-family: Monaco, "Lucida Console", monospace;
-  font-size: 20px;
-  text-align: center;
-  border-bottom: 1px solid #bfbfbf ;
-}
-
-.startP {
-  font-family: Monaco, "Lucida Console", monospace;
-  font-size: 15px;
-  white-space: nowrap;
-}
-
-.proceedButton {
-  position: absolute;
-  right: 24px;
-  margin-top: 10px;
-}
-
-.eventsParent {
-  height: 100%;
-  overflow-wrap: normal;
-}
-
-#myScoreSummary {
-  font: Monaco, "Lucida Console", monospace;
-  font-size: large;
-  margin: 10px;
-  line-height: 10px;
-  text-autospace: initial;
-  font-style: normal;
-  color: sienna;
-}
-
-table {
-  width:100%;
-}
-table, th, td {
-  border: 1px solid #ecedf0;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-  text-align: left;
-}
-th	{
-  background-color: #ff8c64;
-  color: white;
-}
-tr:nth-child(odd) {
-  background-color: #ff8c64;
-  color: white;
-}
- tr:nth-child(even) {
-   background-color: white;
-   color: #ff8c64;
-}
-

@@ -1,21 +1,27 @@
 
-<mat-toolbar color="primary">
-  <!--<div fxLayout="column">-->
-    <!--<div fxLayout="row">-->
-      <span  class="toolBarTitle">Herald International Quiz</span>
-      <span fxFlex></span>
-      <span class="toolBarKey">Member :</span>
-      <span class="toolBarValue">{{member}}</span>
-      <span class="toolBarKey">Team :</span>
-      <span class="toolBarValue">{{teamName}} </span>
-      <span class="toolBarKey">Score :</span>
-      <span class="toolBarValue">{{score}}</span>
-      <span class="toolBarKey">Position :</span>
-      <span class="toolBarValue">{{position}}</span>
-      <span class="toolBarKey">Status :</span>
-      <span class="toolBarValue">{{status ? 'Qualified' : 'Disqualified'}}</span>
-    <!--</div>-->
-  <!--</div>-->
+<!--<mat-toolbar color="primary">-->
+  <!--&lt;!&ndash;<div fxLayout="column">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div fxLayout="row">&ndash;&gt;-->
+      <!--<span  class="toolBarTitle">Herald International Quiz</span>-->
+      <!--<span fxFlex></span>-->
+      <!--<span class="toolBarKey">Member :</span>-->
+      <!--<span class="toolBarValue">{{member}}</span>-->
+      <!--<span class="toolBarKey">Team :</span>-->
+      <!--<span class="toolBarValue">{{teamName}} </span>-->
+      <!--<span class="toolBarKey">Score :</span>-->
+      <!--<span class="toolBarValue">{{score}}</span>-->
+      <!--<span class="toolBarKey">Position :</span>-->
+      <!--<span class="toolBarValue">{{position}}</span>-->
+      <!--<span class="toolBarKey">Status :</span>-->
+      <!--<span class="toolBarValue">{{status ? 'Qualified' : 'Disqualified'}}</span>-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-</mat-toolbar>
+<!--</mat-toolbar>-->
 
+<div class="quickBar">
+  <span class="entryTitle">Category</span> <span class="entryInput"> English</span>
+  <span class="entryTitle"> Round </span> <span class="entryInput">1 of 2</span>
+  <span class="entryTitle">Team Status</span> <span class="entryInput"> {{status ? 'Qualified' : 'Disqualified'}}</span>
+  <span class="entryTitle">Team Position</span> <span class="entryInput"> {{position}}</span>
+</div>

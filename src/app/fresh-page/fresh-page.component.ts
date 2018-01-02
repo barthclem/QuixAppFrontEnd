@@ -17,7 +17,7 @@ import {QuizService} from "../service/quiz.service";
   styleUrls: ['./fresh-page.component.css']
 })
 @HostBinding('hidden')
-export class FreshPageComponent implements OnInit, AfterViewInit, AfterViewChecked{
+export class FreshPageComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   private _animator: AnimationBuilder;
   private  rules = [
@@ -34,8 +34,7 @@ export class FreshPageComponent implements OnInit, AfterViewInit, AfterViewCheck
     private timeService: TimeService,
     private quizEvents: QuizEventService,
     private quizService: QuizService,
-    private dialog: MatDialog,
-    private eventSocketService: EventSocketService) {
+    private dialog: MatDialog) {
     this._animator = animationService.builder();
     this.subscribeToEndOfStartPage();
   }

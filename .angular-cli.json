@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "fonts"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -21,9 +22,10 @@
       "styles": [
         "styles.css",
         "theme.scss",
+        "normalize.css",
+        "ionicons.min.css",
         "loading-animation.less",
-        "../node_modules/animate.css/animate.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css"
+        "../node_modules/animate.css/animate.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
