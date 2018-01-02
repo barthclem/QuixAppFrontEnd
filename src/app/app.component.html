@@ -1,10 +1,10 @@
    <app-header  [displayUserInfo] = displayUserInfo  [pageTitle] = "pageTitle | async"  [userDetails]= userDetails ></app-header>
 
    <div class="multi_content clearfix">
-     <app-leader-board></app-leader-board>
+     <app-leader-board *ngIf="(displayTeamsScore | async) || ( displaySBars | async)"></app-leader-board>
      <router-outlet>
      </router-outlet>
-     <app-online-users></app-online-users>
+     <app-online-users *ngIf="(displayTeamMembers | async) || ( displaySBars | async)"></app-online-users>
    </div>
 
 

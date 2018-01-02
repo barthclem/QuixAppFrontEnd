@@ -9,6 +9,7 @@ import {QChooserService} from './service/q-chooser.service';
 import {QuizEventService} from '../../service/quiz-pane.service';
 import {Unsubscriber} from '../../service/Unsubscriber';
 import {QuizService} from '../../service/quiz.service';
+import {PageService} from "../../service/page.service";
 
 @Component({
   selector: 'app-choser',
@@ -30,6 +31,7 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
   public activeTeam: string;
 
   constructor(
+    private pageService: PageService,
     private timeService: TimeService,
     private router: Router,
     private animationService: AnimationService,
@@ -47,6 +49,9 @@ export class ChoserComponent extends Unsubscriber implements OnInit {
     this.time = this.timeService.getTimer();
     this.teamTurn = this.quizService.teamTurn;
     this.activeTeam = this.quizService.teamName;
+
+    this.pageService.setPageTitle('Question Selection');
+    this.pageService.enableSideBarsDisplay(true);
     if (!this.teamTurn) {
       this.subscribeToQuestionSelected();
       this.subscribeToTeamPickedQuestion();
