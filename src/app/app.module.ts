@@ -61,6 +61,12 @@ const appRoutes: Routes = [
     path: 'fresh', component: FreshPageComponent
   },
   {
+    path: 'start', component: StartPageComponent
+  },
+  {
+    path: 'istart', component: IStartComponent
+  },
+  {
     path: 'quiz', component: QuizComponent
   },
   {

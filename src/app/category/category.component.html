@@ -1,4 +1,4 @@
-<div class="big_content" *ngIf="!endCategoryPageEnabled; else endPage">
+<div  *ngIf="!endCategoryPageEnabled; else endPage">
 
   <div class="summary_content">
     <div class="pickQueInfo">
@@ -32,19 +32,9 @@
         </li>
       </ol>
     </div>
-  </div>
-  <div class="teamMembers">
-    <h3>Team Hayes Member</h3>
-    <ul class="teamList">
-      <li><i class="ion-person person-icon online"></i> <p>Adelaide</p></li>
-      <li><i class="ion-person person-icon online"></i> <p>Hassan</p></li>
-      <li><i class="ion-person person-icon offline"></i> <p class="offline">Funmi </p></li>
-      <li><i class="ion-person person-icon online"></i> <p>Sade</p> </li>
-    </ul>
   </div>
 </div>
-<ng-template class="big_content" #endPage>
-
+<ng-template  #endPage>
   <div class="summary_content">
     <div class="pickQueInfo">
       <h2>End of Category <span class="duration">English</span> Summary</h2>
@@ -77,15 +67,6 @@
         </li>
       </ol>
     </div>
-  </div>
-  <div class="teamMembers">
-    <h3>Team Hayes Member</h3>
-    <ul class="teamList">
-      <li><i class="ion-person person-icon online"></i> <p>Adelaide</p></li>
-      <li><i class="ion-person person-icon online"></i> <p>Hassan</p></li>
-      <li><i class="ion-person person-icon offline"></i> <p class="offline">Funmi </p></li>
-      <li><i class="ion-person person-icon online"></i> <p>Sade</p> </li>
-    </ul>
   </div>
 </ng-template>
 

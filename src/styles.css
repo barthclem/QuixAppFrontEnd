@@ -38,13 +38,17 @@ html, body {
 /*-------- multipleContent  ----------*/
 .multi_content {
   width: 100%;
-  margin: 8% auto;
+  margin: 4% auto;
   line-height: 145%;
   padding: 10px 0;
 }
 
 .multi_content p {
   font-size: 120%;
+}
+
+.quixPage {
+  margin: 8% auto;
 }
 
 .content {
@@ -91,6 +95,24 @@ html, body {
   background-color: rgba(1, 18, 38, 0.19);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+.pickQueInfo {
+  display: block;
+  margin-left: 10%;
+  line-height: 145%;
+  float: left;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
 
 
 .btn {

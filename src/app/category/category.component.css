@@ -1,15 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 /*--------Category Summary Score Board ------*/
+
+.pickQueInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
 .summary_content {
   display: inline-block;
   width: 50%;
-  margin-left: 25%;
-  padding: 30px;
+  margin-left: 20%;
+  float: left;
 }
 
 .summary_content .scoreBoard {
   width: 80% !important;
-  margin:20px auto;
-  margin-left: 10%;
+  margin: 20px auto 20px 10%;
   display: inline-block;
   background: -webkit-gradient(linear, left top, left bottom, from(#3a404d), to(#181c26));
   background: linear-gradient(to bottom, #3a404d, #181c26);
