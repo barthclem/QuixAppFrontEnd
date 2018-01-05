@@ -143,12 +143,11 @@ export class EventSocketService extends Unsubscriber {
     this.subscriptions.push(
       this.quizEventService.onUserDetialsTaken()
         .subscribe( (userData) => {
+          console.log(`WS  Trying to join`);
           this.socketServer.next({event: EventRegistry.JOIN_EVENT,
           user: userData});
         })
     );
-
-
 
   }
 

@@ -2,7 +2,7 @@ import {AfterViewChecked, Component, ElementRef, NgZone, OnDestroy, OnInit, View
 import {ChatService} from '../service/chat.service';
 import {Unsubscriber} from '../service/Unsubscriber';
 import {SendMessage} from '../helpers/SendMessage';
-import {TypingMessage} from "../helpers/TypingMessage";
+import {TypingMessage} from '../helpers/TypingMessage';
 
 @Component({
   selector: 'app-chat',

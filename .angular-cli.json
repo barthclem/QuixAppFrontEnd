@@ -22,6 +22,7 @@
       "styles": [
         "styles.css",
         "theme.scss",
+        "grid.css",
         "normalize.css",
         "ionicons.min.css",
         "loading-animation.less",

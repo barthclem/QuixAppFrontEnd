@@ -9,7 +9,7 @@ import {MatDialog} from '@angular/material';
 import {FreshDialogComponent} from './fresh-dialog/fresh-dialog.component';
 import {QuizEventService} from '../service/quiz-pane.service';
 import {EventSocketService} from '../service/event-socket.service';
-import {QuizService} from "../service/quiz.service";
+import {QuizService} from '../service/quiz.service';
 
 @Component({
   selector: 'app-fresh-page',
@@ -32,6 +32,7 @@ export class FreshPageComponent implements OnInit, AfterViewInit, AfterViewCheck
     private router: Router,
     animationService: AnimationService,
     private timeService: TimeService,
+    private eventService: EventSocketService,
     private quizEvents: QuizEventService,
     private quizService: QuizService,
     private dialog: MatDialog) {

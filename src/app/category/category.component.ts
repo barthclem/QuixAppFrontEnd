@@ -37,12 +37,14 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
               private _elementRef: ElementRef,
               private router: Router) {
     super();
-    this.initiatePage();
     this.subscribeToNewCategory();
     this.subscribeToUsersTurn();
     if (this.timeService.endOfACategory) {
       this.endCategoryPageEnabled = true;
+      this.initiateEndOfCatPage();
       this.initializeEndOfCategory();
+    } else {
+      this.initiateNewCatPage();
     }
     this._animator = this.animationService.builder();
   }
@@ -130,9 +132,13 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
     );
   }
 
-  initiatePage (): void {
+  initiateNewCatPage (): void {
+    this.pageService.enableSideBarsDisplay(true);
+    this.pageService.setPageTitle('New Category');
+  }
+  initiateEndOfCatPage (): void {
     this.pageService.enableTeamMembersDisplay(true);
-    this.pageService.setPageTitle('Category');
+    this.pageService.setPageTitle('Category Summary');
   }
   destroyInitPageSettings () {
     this.pageService.destroyPageView();

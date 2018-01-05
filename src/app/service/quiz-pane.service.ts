@@ -44,6 +44,7 @@ export class QuizEventService {
   }
 
   public userDetailsTaken (user: UserInterface) {
+    console.log(`Sincere Frustra`);
     this._userDetailsTaken.next(user);
   }
 

@@ -32,7 +32,7 @@ export class WebsocketService {
 
     const observer = {
       next: (data: SocketEvent) => {
-        console.log(` Socket Data is => ${JSON.stringify(data)}`);
+        console.log(`WS Socket Data is => ${JSON.stringify(data)}`);
         const event = data.event;
         delete data.event;
         this.socket.emit(event, data);
