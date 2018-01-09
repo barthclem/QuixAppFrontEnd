@@ -1,0 +1,8 @@
+<header class="clearfix">
+  <img src="../assets/img/appLogo.png" alt="geek_logo" class="geek_logo"/>
+  <p>Quix {{pageTitle}}</p>
+  <div class="userInfo" *ngIf="displayUserInfo">
+    <i class="ion-person i-icon"></i> {{userDetails.username}}
+    <i class="ion-android-people i-icon"></i> {{userDetails.team}}
+  </div>
+</header>

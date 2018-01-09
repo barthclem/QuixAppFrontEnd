@@ -1,0 +1,12 @@
+<div class="scoreBoard">
+  <h3>
+    <img src="../../assets/img/cup.png" alt="cup logo" class=""/>
+    Leader Board
+  </h3>
+  <ol class="teamList">
+    <li *ngFor="let team of teamList | async">
+      <mark>{{team.name}}</mark>
+      <small>{{team.totalScore}}</small>
+    </li>
+  </ol>
+</div>

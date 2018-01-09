@@ -1,0 +1,9 @@
+<div class="instructH">
+  <h2>Quix Competition Instructions</h2>
+</div>
+<div class="instructSpace">
+  <p *ngFor="let rule of rules"><i class="ion-android-send ipointer"></i>
+    {{rule}}
+  </p>
+  <button (click)="startQuiz()"><span>Join Quix</span></button>
+</div>

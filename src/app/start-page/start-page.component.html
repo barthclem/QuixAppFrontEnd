@@ -1,0 +1,22 @@
+<div class="logInSpace">
+  <div class="logoArea">
+    <img src="../../assets/img/appLogo.png" alt="quix_logo" class="quix_logo"/>
+  </div>
+  <div class="formArea">
+    <h3>Welcome Back &#33;</h3>
+    <form name="logIn">
+      <label for="user">Username</label><br>
+      <input [(ngModel)]="username" type="text" id="user" name="user" placeholder="enter your username" required/><br>
+      <label for="team"> TeamName</label><br>
+      <select [(ngModel)]="teamName" id="team" name="teamName" value="team">
+        <option value="0" default>Choose your team</option>
+        <option value="Mega">Mega</option>
+        <option value="Stun"> Stun</option>
+        <option value="Winner">Winner</option>
+
+      </select><br>
+      <button class="" type="submit"  (click)="logIn()"><span>Enter</span></button>
+    </form>
+  </div>
+</div>
+
