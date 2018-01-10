@@ -7,6 +7,7 @@ import 'rxjs/add/operator/filter';
 import {PageService} from './service/page.service';
 import {Unsubscriber} from './service/Unsubscriber';
 import {Observable} from "rxjs";
+import {UserInterface} from "./helpers/userDetails";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent extends Unsubscriber {
   displaySBars: Observable<boolean>;
   displayQuixMainApp: Observable<boolean>;
   displayUserInfo = false;
-  userDetails: any;
+  userDetails: UserInterface;
 
   constructor(private pageService: PageService) {
     super();
@@ -36,6 +37,7 @@ export class AppComponent extends Unsubscriber {
     this.subscriptions.push(this.pageService.displayUserInfo
       .subscribe(infoUpdate => {
         this.displayUserInfo = infoUpdate;
+        this.userDetails = this.pageService.getUserDetails();
       }));
   }
 

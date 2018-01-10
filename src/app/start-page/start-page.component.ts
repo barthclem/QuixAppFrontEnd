@@ -61,6 +61,7 @@ export class StartPageComponent implements OnInit, OnDestroy {
       username: this.username,
       team: this.teamName
     });
+    this.pageService.initUserDetails(this.username, this.teamName);
     console.log(`START Quix Service - team: ${this.teamName}   - username: ${this.username}`);
     this.fadeOut('fadeOutDown')
       .then(() => {

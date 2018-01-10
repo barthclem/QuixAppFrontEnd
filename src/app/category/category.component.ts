@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
 import {AnimationService, AnimationBuilder} from 'css-animator';
 import {QuizResultService} from '../service/quiz-result.service';
 import {TimeService} from '../service/time.service';
-import {PageService} from "../service/page.service";
+import {PageService} from '../service/page.service';
 
 @Component({
   selector: 'app-category',
@@ -89,6 +89,7 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
         .subscribe((category) => {
           console.log(`A new category has been started : ${JSON.stringify(category)}`);
           if (category.stageName) {
+            this.endCategoryPageEnabled = false;
             this.quizService.currentCategory = category;
             this.categoryName = category.stageName;
             this.numberOfRounds = category.noOfRounds;
@@ -136,10 +137,12 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
     this.pageService.enableSideBarsDisplay(true);
     this.pageService.setPageTitle('New Category');
   }
+
   initiateEndOfCatPage (): void {
     this.pageService.enableTeamMembersDisplay(true);
     this.pageService.setPageTitle('Category Summary');
   }
+
   destroyInitPageSettings () {
     this.pageService.destroyPageView();
   }

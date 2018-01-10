@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UserInterface} from "../helpers/userDetails";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ export class HeaderComponent  implements OnInit {
 
   @Input('displayUserInfo') displayUserInfo: boolean;
   @Input('pageTitle') pageTitle: string;
-  @Input('userDetails') userDetails: any;
+  @Input('userDetails') userDetails: UserInterface;
 
   constructor() {
   }

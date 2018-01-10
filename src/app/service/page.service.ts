@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
+import {UserInterface} from '../helpers/userDetails';
 
 @Injectable()
 export class PageService {
@@ -86,6 +87,23 @@ export class PageService {
 
   set displayUserInfo(value: Subject<boolean>) {
     this._displayUserInfo = value;
+  }
+
+  fireDisplayUserInfo() {
+    this.displayUserInfo.next(true);
+  }
+
+  public initUserDetails(user: string, team: string): void {
+    this.fireDisplayUserInfo();
+    this.username = user;
+    this.team = team;
+  }
+
+  public getUserDetails(): UserInterface {
+    return  {
+      username : this.username,
+      team: this.team
+    };
   }
 
   public destroyPageView () {

@@ -53,25 +53,9 @@
         Leader Board
       </h3>
       <ol class="teamList">
-        <li>
-          <mark>Team Hayes</mark>
-          <small>315</small>
-        </li>
-        <li>
-          <mark>Team Hayes</mark>
-          <small>310</small>
-        </li>
-        <li>
-          <mark>Team Hayes</mark>
-          <small>300</small>
-        </li>
-        <li>
-          <mark>Team Hayes</mark>
-          <small>325</small>
-        </li>
-        <li>
-          <mark>Team Hayes</mark>
-          <small>355</small>
+        <li *ngFor="let team of teamScoresList | async">
+          <mark>{{team.name}}</mark>
+          <small>{{team.totalScore}}</small>
         </li>
       </ol>
     </div>
