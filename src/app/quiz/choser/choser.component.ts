@@ -48,7 +48,7 @@ export class ChoserComponent extends Unsubscriber implements OnInit, OnDestroy {
     this.questionTags = this.choserService.getQuestionTags();
     this.time = this.timeService.getTimer();
     this.teamTurn = this.quizService.teamTurn;
-    this.activeTeam = this.quizService.teamName;
+    this.activeTeam = this.quizService.activeTeam;
 
     this.initiatePage();
     if (!this.teamTurn) {

@@ -47,8 +47,8 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     this._animator = animationService.builder();
     this.time = this.timeService.getTimer();
     this.teamTurn = this.quizService.teamTurn;
-    // this.question = this.quizService.currentQuestion;
-    this.question = this.quizService.getAQuestion();
+    this.question = this.quizService.currentQuestion;
+    // this.question = this.quizService.getAQuestion();
     this.questionSession = true;
     this.startQuestionCountDownTimer();
     this.quizService.setMessage('It is your turn to pick a question');

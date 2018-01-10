@@ -4,16 +4,16 @@ import {QuizService} from './quiz.service';
 import {QuizEventService} from './quiz-pane.service';
 import {ChatService} from './chat.service';
 import {Unsubscriber} from './Unsubscriber';
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable()
-export class QuizResultService extends Unsubscriber{
+export class QuizResultService extends Unsubscriber {
 
   private _allTeams: Team [];
   private _myTeam: Team;
   private teamName: string;
 
-  private _teamSub: Subject<any>;
+  private _teamSub: BehaviorSubject<any []>;
 
   constructor(
     private quizService: QuizService,
@@ -23,7 +23,7 @@ export class QuizResultService extends Unsubscriber{
     super();
     this.teamName = quizService.teamName;
     this._allTeams = [];
-    this._teamSub = new Subject();
+    this._teamSub = new BehaviorSubject<any []>([]);
     this.subscribeToJoinResponse();
     }
 
@@ -53,7 +53,7 @@ export class QuizResultService extends Unsubscriber{
         this._allTeams.push(team);
       }
     });
-
+   this._allTeams.sort((teamA, teamB) => teamA.position - teamB.position);
     this.teamSub.next(this._allTeams);
   }
 
@@ -65,7 +65,7 @@ export class QuizResultService extends Unsubscriber{
     return this._myTeam;
   }
 
-  get teamSub(): Subject<any> {
+  get teamSub(): BehaviorSubject<any []> {
     return this._teamSub;
   }
 

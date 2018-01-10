@@ -51,6 +51,7 @@ import {PageService} from './service/page.service';
 import { StartPageComponent } from './start-page/start-page.component';
 import { IStartComponent } from './i-start/i-start.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
+import {AudioChatService} from './service/audio-chat.service';
 
 
 const appRoutes: Routes = [
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     MatInputModule, MatCheckboxModule, MatSelectModule, RouterModule.forRoot(appRoutes),
   ],
   providers: [ ChatService, WebsocketService, NavService,
-    QuizEventService, TimeService, QChooserService, QuizService, QuizResultService, EventSocketService, PageService],
+    QuizEventService, TimeService, QChooserService, QuizService,
+    QuizResultService, EventSocketService, PageService, AudioChatService],
   entryComponents: [DialogComponent, FreshDialogComponent],
   bootstrap: [AppComponent]
 })

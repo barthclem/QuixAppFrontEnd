@@ -12,21 +12,20 @@ export interface SocketEvent {
 @Injectable()
 export class WebsocketService {
 
-
-  private socket;
+  private _socket;
 
   constructor() { }
 
   connect(): Rx.Subject<MessageEvent> {
 
-    this.socket = io(environment.ws_url);
+    this._socket = io(environment.ws_url_secure);
 
     const observable = new Observable( (observer: Rx.Observer<MessageEvent>) => {
-      this.socket.on('response', (data) => {
+      this._socket.on('response', (data) => {
         observer.next(data);
       });
       return () => {
-        this.socket.disconnect();
+        this._socket.disconnect();
       };
     });
 
@@ -35,7 +34,7 @@ export class WebsocketService {
         console.log(`WS Socket Data is => ${JSON.stringify(data)}`);
         const event = data.event;
         delete data.event;
-        this.socket.emit(event, data);
+        this._socket.emit(event, data);
       }
     };
 
@@ -43,5 +42,8 @@ export class WebsocketService {
 
   }
 
+  get socket() {
+    return this._socket;
+  }
 }
 

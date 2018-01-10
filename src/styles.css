@@ -169,8 +169,8 @@ footer {
 .duration {
   padding: 0 20px;
   color:#e74c3c;
-  animation:  blink 1s linear 5s  10;
-  -webkit-animation: blink 1s linear 5s  10;
+  animation:  blink 1s linear 25s  10;
+  -webkit-animation: blink 1s linear 25s  10;
 }
 
 @keyframes blink { 50% { color: transparent; } }

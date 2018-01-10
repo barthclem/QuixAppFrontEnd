@@ -2,7 +2,7 @@
 
   <div class="main_content">
     <div class="pickQueInfo">
-      <h2 *ngIf="!aTeamHasPickedQue">Team Hayes, choose a question in <span class="duration">45 sec</span></h2>
+      <h2 *ngIf="!aTeamHasPickedQue">Team {{activeTeam}}, choose a question in <span class="duration">{{time.seconds}} sec</span></h2>
       <h2 *ngIf="aTeamHasPickedQue"> {{pickedQueMessage}}</h2>
     </div>
     <div class="options">
@@ -21,6 +21,9 @@
 
 <ng-template  #waitPage>
   <div class="main_content">
+    <div class="pickQueInfo" *ngIf="aTeamHasPickedQue">
+      <h2> {{pickedQueMessage}}</h2>
+    </div>
     <div class="pickerMsg">
       Wait for {{activeTeam}} to choose a question<br>in
       <span class="countdown">{{time.seconds}} <small>secs</small></span>

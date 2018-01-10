@@ -10,18 +10,21 @@ import {
 } from '../helpers/EventRegistry';
 import {ChatService} from './chat.service';
 import {QChooserService} from '../quiz/choser/service/q-chooser.service';
-import {QuizResultService} from "./quiz-result.service";
+import {QuizResultService} from './quiz-result.service';
+import {AudioChatService} from './audio-chat.service';
 
 @Injectable()
 export class EventSocketService extends Unsubscriber {
 
   socketServer: Subject<any>;
-  constructor( private webSocket: WebsocketService,
+  constructor(
+    private webSocket: WebsocketService,
   private timeService: TimeService,
   private quizEventService: QuizEventService,
   private quizResultService: QuizResultService,
   private chatService: ChatService,
-  private chooserService: QChooserService
+  private chooserService: QChooserService,
+    private audioChatService: AudioChatService
   ) {
     super();
     this.socketServer = <Subject<any>> this.webSocket.connect()
@@ -50,11 +53,12 @@ export class EventSocketService extends Unsubscriber {
    this.subscriptions.push(
      this.timeService.onEntryPageTimerStopped()
        .subscribe(  () => {
-         if (this.timeService.localTimerStarted) {
-           console.log(`You can't send timer... Timer Already stopped`);
-         } else {
-           this.socketServer.next({event: TimeEventRegistry.ENTRY_PAGE_TIMER_STOPPED_EVENT});
-         }
+        // this.socketServer.next({event: TimeEventRegistry.ENTRY_PAGE_TIMER_STOPPED_EVENT});
+         // if (this.timeService.localTimerStarted) {
+         //   console.log(`You can't stop timer... Timer Already stopped`);
+         // } else {
+         //   this.socketServer.next({event: TimeEventRegistry.ENTRY_PAGE_TIMER_STOPPED_EVENT});
+         // }
          }
        )
    );
@@ -223,6 +227,9 @@ export class EventSocketService extends Unsubscriber {
       case TimeEventRegistry.START_PAGE_END_EVENT:
         this.timeService.startPageEnd();
         break;
+      case TimeEventRegistry.ENTRY_PAGE_TIMER_STOPPED_EVENT :
+        this.timeService.entryPageTimerStopped();
+        break;
       case QuizEventRegistry.START_OF_NEW_CATEGORY:
         console.log(`Start of New Category => ${JSON.stringify(message)}`);
         this.quizEventService.fireNewCategoryEvent({stageName :  message.stageName,
@@ -279,6 +286,7 @@ export class EventSocketService extends Unsubscriber {
       case ChatEventRegistry.JOIN_EVENT_RESPONSE:
         this.chatService.fireJoinEventResponse(message);
         this.timeService.setOnlineTimerStatus(responseObject.timerStarted);
+        this.audioChatService.setUpAudioService(message.team);
         break;
 
       case ChatEventRegistry.CONNECTION_EVENT:

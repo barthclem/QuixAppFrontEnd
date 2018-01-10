@@ -51,3 +51,10 @@ export const QuizEventRegistry = {
 export const NavEventRegistry = {
   UPDATE_SCORE: 'UpdateScore'
 };
+
+export const AudioEventRegistry = {
+  CONNECTED : 'connected',
+  NEW_PEER : 'new_peer',
+  UUID : 'uuid',
+  SIGNAL : 'signal'
+};

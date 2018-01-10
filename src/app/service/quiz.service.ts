@@ -3,7 +3,7 @@ import {Question} from '../helpers/question';
 import {QuestionImpl} from '../helpers/QuestionImpl';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Category} from '../helpers/Category';
-import {QuestionType} from "../helpers/QuestionType";
+import {QuestionType} from '../helpers/QuestionType';
 
 @Injectable()
 export class QuizService {

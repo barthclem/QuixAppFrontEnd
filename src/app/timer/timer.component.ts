@@ -34,6 +34,7 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
     super();
     this.initiatePage();
     this.subscribeToPageTimerStopped();
+    this.subscribeToPageTimerResponse();
     this._animator = this.animationService.builder();
     console.log(`The time Service onlineTimer Started => ${this.timeService.onlineTimerStarted}`);
         if (this.timeService.onlineTimerStarted) {
@@ -45,8 +46,8 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
     console.log(`Init this guy mehn --- I mean for real (-_-)`);
     this.fadeInAnimation();
     if (this.timeService.onlineTimerStarted) {
-      this.startLocalTimer(this.onlineTime);
-      this.onlineTimeSub.unsubscribe();
+     // this.startLocalTimer(this.onlineTime);
+      // this.onlineTimeSub.unsubscribe();
     } else {
       this.startTimer();
     }
@@ -87,15 +88,15 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
   startTimer () {
     this.timeService.entryPageTimerStarted(1);
     this.timeService.localTimerStarted = true;
-    this.timeSub = this.timeService.minuteTimer(1)
-      .subscribe(time => {
-          this.minutes = this.getMinute(time);
-          this.seconds = this.getSeconds(time);
-          this.timeString = `${this.minutes <= 0 ? ' ' : (this.minutes + '  min ')} ${this.seconds} sec`;
-        }, (error) => {console.log( `time subscriptions : ${error}`); },
-        () => {
-          console.log(`End of Entry Page Timer`);
-          this.timeService.entryPageTimerStopped(); } );
+    // this.timeSub = this.timeService.minuteTimer(1)
+    //   .subscribe(time => {
+    //       this.minutes = this.getMinute(time);
+    //       this.seconds = this.getSeconds(time);
+    //       this.timeString = `${this.minutes <= 0 ? ' ' : (this.minutes + '  min ')} ${this.seconds} sec`;
+    //     }, (error) => {console.log( `time subscriptions : ${error}`); },
+    //     () => {
+    //       console.log(`End of Entry Page Timer`);
+    //       this.timeService.entryPageTimerStopped(); } );
   }
 
   startLocalTimer ( currentTime: number) {
@@ -124,18 +125,23 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
       this.timeService.onEntryPageTimerStopped()
         .subscribe(() => {
           console.log(` Please subscribe now -- `);
-          this.timeSub.unsubscribe();
           this.fadeOut();
           this.timeService.startPageEnd();
         }, (error) => { console.log(` PageTimer Stopped Error => ${error}`); })
     );
   }
 
-subscribeToPageTimerResponse() {
+subscribeToPageTimerResponse() : void {
   this.onlineTimeSub = this.timeService.onEntryOnlinePageTimerResponse()
     .subscribe((currentDuration) => {
-      console.log(`current Online time : ${currentDuration}`);
+      console.log(`----> current Online time : ${currentDuration}`);
       this.onlineTime = currentDuration;
+      this.minutes = this.getMinute(this.onlineTime);
+      this.seconds = this.getSeconds(this.onlineTime);
+      this.timeString = `${this.minutes <= 0 ? ' ' : (this.minutes + '  min ')} ${this.seconds} sec`;
+      if (this.onlineTime <= 0 ) {
+        this.timeService.entryPageTimerStopped();
+      }
     }, (error) => { console.log(` PageTimer Stopped Error => ${error}`); });
   }
 

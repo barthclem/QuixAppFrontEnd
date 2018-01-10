@@ -1,5 +1,5 @@
 <div class="teamMembers">
-  <h3>Team Hayes Member</h3>
+  <h3>Team {{team}} Member</h3>
   <ul class="teamList">
     <li *ngFor="let member of teamMembers">
       <i class="ion-person person-icon" [ngClass] = "{'online': member.isOnline, 'offline': !member.isOnline}"></i>
