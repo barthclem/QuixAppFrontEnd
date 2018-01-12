@@ -16,12 +16,18 @@ export class NavComponent extends  Unsubscriber  implements OnInit {
   public score: number;
   public position: number;
   public status: boolean;
+  public categoryName: string;
+  public totalNoOfRounds: number;
+  public currentRound: number;
 
   constructor(
     private quizService: QuizService,
     private quizEventService: QuizEventService
   ) {
     super();
+    this.categoryName = this.quizService.currentCategory.stageName;
+    this.totalNoOfRounds = this.quizService.currentCategory.noOfRounds;
+    this.currentRound = this.quizService.currentRound;
     this.member = this.quizService.username;
     this.teamName = this.quizService.teamName;
     this.status = true;

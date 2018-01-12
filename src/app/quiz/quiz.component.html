@@ -3,7 +3,7 @@
 
   <div class="main_content pushUp">
     <app-notification></app-notification>
-    <app-question-card></app-question-card>
+    <app-question-card (navigateEvent) = "navigate($event)"></app-question-card>
   </div>
 
 

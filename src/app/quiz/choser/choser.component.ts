@@ -122,10 +122,11 @@ export class ChoserComponent extends Unsubscriber implements OnInit, OnDestroy {
   subscribeToQuestionLoaded () {
     this.subscriptions.push(
       this.quizEventService.onQuestionLoaded().subscribe(
-        (question) => {
-          if (question.category) {
-            console.log(`CHOSER COMPONENT: Question downloaded from the net: ${JSON.stringify(question)}`);
-            this.quizService.currentQuestion = question;
+        (questionBody) => {
+          if (questionBody.question) {
+            console.log(`CHOSER COMPONENT: Question downloaded from the net: ${JSON.stringify(questionBody)}`);
+            this.quizService.currentQuestion = questionBody.question;
+            this.quizService.currentRound = questionBody.currentRound;
             this.fadeOut();
           }
 

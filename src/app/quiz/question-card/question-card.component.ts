@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {TimeService} from '../../service/time.service';
 import {QuizEventService} from '../../service/quiz-pane.service';
@@ -31,11 +31,14 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   private timeToAnswer: number;
   public selectedOptionIndex = -1;
   public remainingSec: string;
+  @Output() navigateEvent = new EventEmitter<boolean>();
 
   private _animator: AnimationBuilder;
   constructor(
-    private animationService: AnimationService, private _elementRef: ElementRef,
-    private router: Router, private timeService: TimeService,
+    private animationService: AnimationService,
+    private _elementRef: ElementRef,
+    private router: Router,
+    private timeService: TimeService,
     private quizEventService: QuizEventService, private quizService: QuizService) {
     super();
     this.subscribeQuestionOptionPicked();
@@ -95,14 +98,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   }
 
   fadeOut() {
-    this._animator
-      .setType('fadeOutLeft')
-      .setDelay(1000)
-      .setDuration(1000)
-      .hide(this._elementRef.nativeElement)
-      .then(() => { console.log('Page is loaded'); })
-      .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
-
+    this.navigateEvent.emit(true);
   }
 
 
@@ -210,9 +206,8 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     this.subscriptions.push(
       this.quizEventService.onEndOfCategory()
         .subscribe(() => {
-          this.fadeOut();
           this.timeService.endOfACategory = true;
-          this.router.navigate(['category']);
+          this.fadeOut();
         })
     );
   }

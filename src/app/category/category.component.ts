@@ -16,10 +16,6 @@ import {PageService} from '../service/page.service';
 })
 export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy {
 
-  public endCategoryPageEnabled: boolean;
-  public teamTotalScore: number;
-  public teamPosition: number;
-  public teamScoresList: any;
   public categoryName = '';
   public numberOfRounds = 0;
   public teams: string [] = [];
@@ -31,21 +27,13 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
               private pageService: PageService,
               private quizService: QuizService,
               private quizEventService: QuizEventService,
-              private quizResultService: QuizResultService,
-              private timeService: TimeService,
               private animationService: AnimationService,
               private _elementRef: ElementRef,
               private router: Router) {
     super();
-    this.subscribeToNewCategory();
+    this.initiateNewCatPage();
+    this.initiateNewCategory();
     this.subscribeToUsersTurn();
-    if (this.timeService.endOfACategory) {
-      this.endCategoryPageEnabled = true;
-      this.initiateEndOfCatPage();
-      this.initializeEndOfCategory();
-    } else {
-      this.initiateNewCatPage();
-    }
     this._animator = this.animationService.builder();
   }
 
@@ -76,6 +64,7 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
       .hide(this._elementRef.nativeElement)
       .then(() => {
         console.log('Category Page is loaded');
+        this.router.navigate(['choose']);
       })
       .catch(error => {
         console.log(`fade In - Error using Animation => ${error}`);
@@ -83,32 +72,11 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
 
   }
 
-  subscribeToNewCategory() {
-    this.subscriptions.push(
-      this.quizEventService.onStartOfNewCategory()
-        .subscribe((category) => {
-          console.log(`A new category has been started : ${JSON.stringify(category)}`);
-          if (category.stageName) {
-            this.endCategoryPageEnabled = false;
-            this.quizService.currentCategory = category;
-            this.categoryName = category.stageName;
-            this.numberOfRounds = category.noOfRounds;
-            this.teams = category.teams;
-          }
-        })
-    );
-  }
-
-  initializeEndOfCategory() {
-    const myTeam = this.quizResultService.getMyTeam();
-    this.teamTotalScore = myTeam.totalScore;
-    this.teamPosition = myTeam.position;
-    const allTeams = this.quizResultService.getAllTeamList();
-    this.teamScoresList = allTeams.map(team => ({
-      teamPosition: team.position,
-      teamTotalScore: team.totalScore,
-      teamName: team.name
-    }));
+  initiateNewCategory(): void {
+    const category = this.quizService.currentCategory;
+    this.categoryName = category.stageName;
+    this.numberOfRounds = category.noOfRounds;
+    this.teams = category.teams;
   }
 
   subscribeToUsersTurn() {
@@ -127,7 +95,6 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
             console.log(`Active Team => ${queTag.team}; My Team => ${this.quizService.teamName};
              Team Turn => ${this.quizService.teamTurn}`);
             this.fadeOut();
-            this.router.navigate(['choose']);
           }
         })
     );
@@ -136,11 +103,6 @@ export class CategoryComponent extends Unsubscriber implements OnInit, OnDestroy
   initiateNewCatPage (): void {
     this.pageService.enableSideBarsDisplay(true);
     this.pageService.setPageTitle('New Category');
-  }
-
-  initiateEndOfCatPage (): void {
-    this.pageService.enableTeamMembersDisplay(true);
-    this.pageService.setPageTitle('Category Summary');
   }
 
   destroyInitPageSettings () {

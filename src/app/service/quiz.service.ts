@@ -7,9 +7,9 @@ import {QuestionType} from '../helpers/QuestionType';
 
 @Injectable()
 export class QuizService {
-
   private demoQuestions: Question[];
   private _currentQuestion: Question;
+  private _currentRound: number;
   private _message = new BehaviorSubject<string>('Welcome to Quix');
   private _currentCategory: Category;
 
@@ -98,6 +98,14 @@ export class QuizService {
 
   set currentCategory(value: Category) {
     this._currentCategory = value;
+  }
+
+  get currentRound(): number {
+    return this._currentRound;
+  }
+
+  set currentRound(value: number) {
+    this._currentRound = value;
   }
 
 }

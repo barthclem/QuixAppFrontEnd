@@ -5,6 +5,8 @@ import {Subscription} from 'rxjs';
 import {Unsubscriber} from '../service/Unsubscriber';
 import {AnimationService, AnimationBuilder} from 'css-animator';
 import {PageService} from '../service/page.service';
+import {QuizEventService} from '../service/quiz-pane.service';
+import {QuizService} from '../service/quiz.service';
 
 @Component({
   selector: 'app-timer',
@@ -28,6 +30,8 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
     private pageService: PageService,
     private timeService: TimeService,
     private router: Router,
+    private quizEventService: QuizEventService,
+    private quizService: QuizService,
     private animationService: AnimationService,
     private _elementRef: ElementRef
   ) {
@@ -35,6 +39,7 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
     this.initiatePage();
     this.subscribeToPageTimerStopped();
     this.subscribeToPageTimerResponse();
+    this.subscribeToNewCategory();
     this._animator = this.animationService.builder();
     console.log(`The time Service onlineTimer Started => ${this.timeService.onlineTimerStarted}`);
         if (this.timeService.onlineTimerStarted) {
@@ -45,10 +50,7 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
   ngOnInit() {
     console.log(`Init this guy mehn --- I mean for real (-_-)`);
     this.fadeInAnimation();
-    if (this.timeService.onlineTimerStarted) {
-     // this.startLocalTimer(this.onlineTime);
-      // this.onlineTimeSub.unsubscribe();
-    } else {
+    if (!this.timeService.onlineTimerStarted) {
       this.startTimer();
     }
   }
@@ -70,7 +72,9 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
       .setDelay(100)
       .setDuration(700)
       .hide(this._elementRef.nativeElement)
-      .then(() => { this.timeService.endOfACategory = false; this.router.navigate(['category']);  console.log('Timer Page is Out for now'); })
+      .then(() => {
+      this.timeService.endOfACategory = false; this.router.navigate(['s-category']);
+      console.log('Timer Page is Out for now'); })
       .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
 
   }
@@ -88,28 +92,8 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
   startTimer () {
     this.timeService.entryPageTimerStarted(1);
     this.timeService.localTimerStarted = true;
-    // this.timeSub = this.timeService.minuteTimer(1)
-    //   .subscribe(time => {
-    //       this.minutes = this.getMinute(time);
-    //       this.seconds = this.getSeconds(time);
-    //       this.timeString = `${this.minutes <= 0 ? ' ' : (this.minutes + '  min ')} ${this.seconds} sec`;
-    //     }, (error) => {console.log( `time subscriptions : ${error}`); },
-    //     () => {
-    //       console.log(`End of Entry Page Timer`);
-    //       this.timeService.entryPageTimerStopped(); } );
   }
 
-  startLocalTimer ( currentTime: number) {
-    this.timeSub = this.timeService.minuteTimer(currentTime, true)
-      .subscribe(time => {
-          this.minutes = this.getMinute(time);
-          this.seconds = this.getSeconds(time);
-          this.timeString = `${this.minutes <= 0 ? ' ' : (this.minutes + '  min ')} ${this.seconds} sec`;
-        }, (error) => {console.log( `time subscriptions : ${error}`); },
-        () => {
-          console.log(`End of Entry Page Timer`);
-          this.timeService.entryPageTimerStopped(); } );
-  }
 
   getMinute ( time: number) {
     return Math.floor(time / 60);
@@ -125,13 +109,13 @@ export class TimerComponent extends Unsubscriber implements OnInit, OnDestroy {
       this.timeService.onEntryPageTimerStopped()
         .subscribe(() => {
           console.log(` Please subscribe now -- `);
-          this.fadeOut();
+         // this.fadeOut();
           this.timeService.startPageEnd();
         }, (error) => { console.log(` PageTimer Stopped Error => ${error}`); })
     );
   }
 
-subscribeToPageTimerResponse() : void {
+subscribeToPageTimerResponse(): void {
   this.onlineTimeSub = this.timeService.onEntryOnlinePageTimerResponse()
     .subscribe((currentDuration) => {
       console.log(`----> current Online time : ${currentDuration}`);
@@ -143,6 +127,17 @@ subscribeToPageTimerResponse() : void {
         this.timeService.entryPageTimerStopped();
       }
     }, (error) => { console.log(` PageTimer Stopped Error => ${error}`); });
+  }
+
+  subscribeToNewCategory() {
+    this.subscriptions.push(
+      this.quizEventService.onStartOfNewCategory()
+        .subscribe((category) => {
+          console.log(`A new category has been started : ${JSON.stringify(category)}`);
+          this.quizService.currentCategory = category;
+          this.fadeOut();
+        })
+    );
   }
 
   ngOnDestroy(): void {

@@ -1,13 +1,11 @@
 import {Component} from '@angular/core';
-import {MatIconRegistry, MatDialog} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {DialogComponent} from './dialog/dialog.component';
 
 import 'rxjs/add/operator/filter';
 import {PageService} from './service/page.service';
 import {Unsubscriber} from './service/Unsubscriber';
-import {Observable} from "rxjs";
-import {UserInterface} from "./helpers/userDetails";
+import {Observable} from 'rxjs';
+import {UserInterface} from './helpers/userDetails';
 
 @Component({
   selector: 'app-root',

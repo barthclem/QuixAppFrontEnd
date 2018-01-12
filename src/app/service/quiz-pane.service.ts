@@ -10,6 +10,7 @@ import {QueTagImpl} from '../helpers/QueTagImpl';
 import {QuestionAttempted} from '../helpers/QuestionAttempted';
 import {Team} from '../helpers/Team';
 import {TeamImpl} from '../helpers/TeamImpl';
+import {QuestionBody} from "../helpers/QuestionBody";
 
 @Injectable()
 export class QuizEventService {
@@ -17,7 +18,7 @@ export class QuizEventService {
   private _questionIsSelected = new Subject<number>();
   private _questionIsAnswered = new Subject<QuestionAttempted>();
   private _bonusIsAttempted = new Subject<QuestionAttempted>();
-  private _questionIsLoaded = new Subject<Question>();
+  private _questionIsLoaded = new Subject<QuestionBody>();
   private _answerIsLoaded = new Subject<any>();
   private _bonusIsLoaded = new Subject<string>();
   private _updateQuestionTag = new Subject<number>();
@@ -67,8 +68,8 @@ export class QuizEventService {
     this._myTeamScoreUpdate.next(team);
   }
 
-  public fireQuestionLoadedEvent (question: Question) {
-   this._questionIsLoaded.next(question);
+  public fireQuestionLoadedEvent (questionBody: QuestionBody) {
+   this._questionIsLoaded.next(questionBody);
   }
 
   public fireAnswerLoadedEvent (result: any) {

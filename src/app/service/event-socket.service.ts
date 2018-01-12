@@ -233,7 +233,7 @@ export class EventSocketService extends Unsubscriber {
       case QuizEventRegistry.START_OF_NEW_CATEGORY:
         console.log(`Start of New Category => ${JSON.stringify(message)}`);
         this.quizEventService.fireNewCategoryEvent({stageName :  message.stageName,
-          noOfRounds: message.numberOfRounds,
+          noOfRounds: message.noOfRounds,
           teams: message.teams});
         break;
       case QuizEventRegistry.END_OF_CATEGORY:
@@ -253,7 +253,7 @@ export class EventSocketService extends Unsubscriber {
       case QuizEventRegistry.QUESTION_LOADED_EVENT:
         console.log(`Question loaded => ${JSON.stringify(message)}`);
         // fireBonusLoadedEvent
-        this.quizEventService.fireQuestionLoadedEvent(message.question);
+        this.quizEventService.fireQuestionLoadedEvent(message);
         break;
       case QuizEventRegistry.ANSWERED_LOADED_EVENT:
         console.log(`Answered loaded => ${JSON.stringify(message)}`);
