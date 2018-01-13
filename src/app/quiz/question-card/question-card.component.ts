@@ -9,7 +9,9 @@ import {TimerInterface} from '../../helpers/timeInterface';
 import {AnimationService} from 'css-animator';
 import {AnimationBuilder} from 'css-animator';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
-import {QuizResultService} from "../../service/quiz-result.service";
+import {NotificationType} from '../../helpers/NotificationType';
+import {NotificationMessage} from '../../helpers/NotificationMessage';
+import {NotificationBody} from '../../helpers/NotificationBody';
 
 @Component({
   selector: 'app-question-card',
@@ -34,12 +36,12 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   @Output() navigateEvent = new EventEmitter<boolean>();
 
   private _animator: AnimationBuilder;
-  constructor(
-    private animationService: AnimationService,
-    private _elementRef: ElementRef,
-    private router: Router,
-    private timeService: TimeService,
-    private quizEventService: QuizEventService, private quizService: QuizService) {
+
+  constructor(private animationService: AnimationService,
+              private _elementRef: ElementRef,
+              private router: Router,
+              private timeService: TimeService,
+              private quizEventService: QuizEventService, private quizService: QuizService) {
     super();
     this.subscribeQuestionOptionPicked();
     this.subscribeToStartBonus();
@@ -54,32 +56,41 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     // this.question = this.quizService.getAQuestion();
     this.questionSession = true;
     this.startQuestionCountDownTimer();
-    this.quizService.setMessage('It is your turn to pick a question');
-}
+    this.quizService.setMessage({
+      notificationType: NotificationType.QUESTION_ALERT,
+      message: NotificationMessage.TURN_TO_ANSWER
+    });
+  }
 
   ngOnInit() {
     this.fadeInAnimation();
   }
 
-  fadeInAnimation () {
+  fadeInAnimation() {
     this._animator
       .setType('fadeInRight')
       .setDelay(100)
       .setDuration(700)
       .show(this._elementRef.nativeElement)
-      .then(() => { console.log('Page is loaded'); })
-      .catch( error => { console.log(`fade In - Error using Animation => ${error}`); });
+      .then(() => {
+        console.log('Page is loaded');
+      })
+      .catch(error => {
+        console.log(`fade In - Error using Animation => ${error}`);
+      });
 
   }
 
-  startTimer( min: number, sec: number) {
+  startTimer(min: number, sec: number) {
     this.timeToAnswer = 0;
     this.timeSubscription = this.timeService.countdownTimer(min, sec, this.answerPicked)
       .subscribe((time) => {
           this.time.minutes = this.timeService.getMinute(time);
           this.time.seconds = this.timeService.getSeconds(time);
           this.timeToAnswer++;
-        }, (error) => {console.log(` Choser Timer Error => ${error} `); },
+        }, (error) => {
+          console.log(` Choser Timer Error => ${error} `);
+        },
         () => {
           if (!this.answerPicked.getValue()) {
             this.timeService.onTimeForQuestionExpired();
@@ -102,7 +113,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   }
 
 
-  public answerClicked(index: number, checked: boolean) {
+  public answerClicked(index: number, checked?: boolean) {
     console.log(`current value of answer picked => ${this.answerPicked.getValue()}`);
     this.answerPicked.next(true);
     console.log(`updated value of answer picked => ${this.answerPicked.getValue()}`);
@@ -126,7 +137,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     this.timeSubscription.unsubscribe();
   }
 
-  subscribeToAnswerLoaded () {
+  subscribeToAnswerLoaded() {
     this.subscriptions.push(this.quizEventService.onAnsweredLoaded()
       .subscribe(answerBlock => {
         console.log(`Answer Loaded itch => ${JSON.stringify(answerBlock)}`);
@@ -134,12 +145,18 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
         this.answerPicked.next(false);
         this.selectedOptionIndex = answerBlock.selectedOptionIndex;
         this.answerPicked.next(true);
-        this.setNotificationMessage(message);
+        this.setNotificationMessage({message: message, notificationType: NotificationType.QUESTION_ALERT});
         setTimeout(() => {
           if (this.teamTurn) {
-            this.setNotificationMessage(`You are ${answerBlock.isCorrect ? 'correct' : 'wrong'}`);
+            this.setNotificationMessage({
+              message: `You are ${answerBlock.isCorrect ? 'correct' : 'wrong'}`,
+              notificationType: answerBlock.isCorrect ? NotificationType.CORRECT_ANSWER : NotificationType.WRONG_ANSWER
+            });
           } else {
-            this.setNotificationMessage(`Team ${answerBlock.teamName} is ${answerBlock.isCorrect ? 'correct' : 'wrong'}`);
+            this.setNotificationMessage({
+              message: `Team ${answerBlock.teamName} is ${answerBlock.isCorrect ? 'correct' : 'wrong'}`,
+              notificationType: answerBlock.isCorrect ? NotificationType.CORRECT_ANSWER : NotificationType.WRONG_ANSWER
+            });
           }
         }, 2000);
         this.teamTurn = false;
@@ -161,15 +178,22 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
         this.teamBonus = teamName === this.quizService.teamName;
         const message = ` Wrong!, Bonus goes to team ${teamName}`;
         console.log(message);
-        this.setNotificationMessage(message);
+        this.setNotificationMessage({
+          message: message,
+          notificationType: NotificationType.WRONG_ANSWER
+        });
         if (this.teamBonus) {
-          this.setNotificationMessage(`Team ${teamName} You have a bonus question`);
+          this.setNotificationMessage({
+            message: `Team ${teamName} You have a bonus question`,
+            notificationType: NotificationType.BONUS_ALERT
+          });
         }
-        this.startBonusSession(); })
+        this.startBonusSession();
+      })
     );
   }
 
-  startBonusSession () {
+  startBonusSession() {
     this.selectedOptionIndex = -1;
     this.answerPicked.next(false);
     this._markedAnswer = -1;
@@ -181,13 +205,14 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     console.log('start countdown timer');
     Observable.timer(3000)
       .finally(() => {
-      console.log(`Countdown Started`);
-      this.fadeOut();
-      this.router.navigate(['choose']); })
+        console.log(`Countdown Started`);
+        this.fadeOut();
+        this.router.navigate(['choose']);
+      })
       .subscribe();
   }
 
-  subscribeToGoToPickQuestion () {
+  subscribeToGoToPickQuestion() {
     console.log(`Considered Users Turn Subscribe`);
     this.subscriptions.push(
       this.quizEventService.onUsersTurnToPickQuestion()
@@ -202,7 +227,7 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
     );
   }
 
-  subscribeToEndCategory () {
+  subscribeToEndCategory() {
     this.subscriptions.push(
       this.quizEventService.onEndOfCategory()
         .subscribe(() => {
@@ -222,8 +247,8 @@ export class QuestionCardComponent extends Unsubscriber implements OnInit {
   }
 
 
-  setNotificationMessage( message: string) {
-    this.quizService.setMessage(message);
+  setNotificationMessage(notificationMessage: NotificationBody) {
+    this.quizService.setMessage(notificationMessage);
   }
 
 }

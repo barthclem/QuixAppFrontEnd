@@ -1,4 +1,4 @@
 
-<div class="queNotific generalInfo">
-  <h2> {{notificationMessage | async}}</h2>
+<div class="queNotific generalInfo" [ngClass]="selectNotificationCssClass((notificationMessage | async).notificationType)">
+  <h2> {{(notificationMessage | async).message}}</h2>
 </div>

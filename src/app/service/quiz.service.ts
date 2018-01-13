@@ -4,13 +4,16 @@ import {QuestionImpl} from '../helpers/QuestionImpl';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Category} from '../helpers/Category';
 import {QuestionType} from '../helpers/QuestionType';
+import {NotificationBody} from "../helpers/NotificationBody";
+import {NotificationType} from "../helpers/NotificationType";
+import {NotificationMessage} from "../helpers/NotificationMessage";
 
 @Injectable()
 export class QuizService {
   private demoQuestions: Question[];
   private _currentQuestion: Question;
   private _currentRound: number;
-  private _message = new BehaviorSubject<string>('Welcome to Quix');
+  private _message = new BehaviorSubject<NotificationBody>({notificationType: NotificationType.GENERAL, message: NotificationMessage.WELCOME_MESSAGE});
   private _currentCategory: Category;
 
   private _teamName: string;
@@ -84,11 +87,11 @@ export class QuizService {
     return Math.floor(Math.random() * 3) === 0;
   }
 
-  setMessage( message: string) {
-    this._message.next(message);
+  setMessage( alert: NotificationBody) {
+    this._message.next(alert);
   }
 
-  getMessage(): BehaviorSubject<string> {
+  getMessage(): BehaviorSubject<NotificationBody> {
     return this._message;
   }
 

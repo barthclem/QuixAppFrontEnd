@@ -17,17 +17,25 @@
   box-shadow: 1px 1px 10px rgba(60, 231, 126, 0.65);
 }
 
+.turnToPickInfo {
+  background-color: rgba(160, 238, 136, 0.84);
+  box-shadow: 1px 1px 10px rgba(160, 238, 136, 0.84);
+}
 
 .bonusInfo {
   background-color: #e74c3c;
   box-shadow: 1px 1px 10px rgba(231, 76, 60, 0.65);
 }
 
-.answerInfo {
+.wrongAnswerInfo {
   background-color: rgba(160, 45, 34, 0.87);
   box-shadow: 1px 1px 10px rgba(160, 45, 34, 0.87);
 }
 
+.correctAnswerInfo {
+  background-color: rgba(104, 179, 126, 0.86);
+  box-shadow: 1px 1px 10px  rgba(104, 179, 126, 0.86);
+}
 
 .queInfo h2 , .queNotific h2{
   font-weight: 100;
