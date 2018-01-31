@@ -42,6 +42,7 @@
     "handlebars": "^4.0.11",
     "rxjs": "^5.4.2",
     "simple-peer": "^8.2.0",
+    "socket.io-client": "^2.0.4",
     "typescript": "~2.3.3",
     "zone.js": "^0.8.14"
   },
