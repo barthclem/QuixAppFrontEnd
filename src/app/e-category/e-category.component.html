@@ -1,0 +1,17 @@
+<div class="summary_content">
+  <div class="pickQueInfo">
+    <h2>End of Category <span class="duration">{{categoryName}}</span> Summary</h2>
+  </div>
+  <div class="scoreBoard">
+    <h3>
+      <img src="../../assets/img/cup.png" alt="cup logo" class=""/>
+      Leader Board
+    </h3>
+    <ol class="teamList">
+      <li *ngFor="let team of teamScoresList | async">
+        <mark>{{team.name}}</mark>
+        <small>{{team.totalScore}}</small>
+      </li>
+    </ol>
+  </div>
+</div>

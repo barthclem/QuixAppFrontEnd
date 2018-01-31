@@ -30,7 +30,7 @@ export class QuizEventService {
   private _teamHasPickedQuestion = new Subject<string>();
   private _startNewCategory = new Subject<Category>();
   private _endOfCategory = new Subject<void>();
-  private _endOfQuiz = new Subject<void>();
+  private _endOfQuixCompetition = new Subject<void>();
   private _userDetailsTaken = new Subject<UserInterface>();
 
 
@@ -84,8 +84,8 @@ export class QuizEventService {
     this._bonusIsLoaded.next(team);
   }
 
-  public endOfQuiz () {
-     this._endOfQuiz.next();
+  public fireEndOfQuixCompetition () {
+     this._endOfQuixCompetition.next();
   }
 
   public fireNewCategoryEvent (category: Category) {
@@ -140,7 +140,7 @@ export class QuizEventService {
   }
 
   public onEndOfQuiz () {
-    return this._endOfQuiz;
+    return this._endOfQuixCompetition;
   }
 
   public onStartOfNewCategory () {

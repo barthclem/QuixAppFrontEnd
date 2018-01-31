@@ -1,0 +1,109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*--------Category Summary Score Board ------*/
+
+.pickQueInfo {
+  display: block;
+  margin-left: 5%;
+  line-height: 145%;
+  width: 90%;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.pickQueInfo h2 {
+  font-weight: 200;
+}
+
+.summary_content {
+  display: inline-block;
+  width: 50%;
+  margin-left: 20%;
+  float: left;
+}
+
+.summary_content .scoreBoard {
+  width: 80% !important;
+  margin: 20px auto 20px 10%;
+  display: inline-block;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3a404d), to(#181c26));
+  background: linear-gradient(to bottom, #3a404d, #181c26);
+  border-radius: 10px;
+  -webkit-box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+  box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
+}
+
+
+/*-----------------New Category ---------------*/
+
+.row {
+  margin-bottom: 14px;
+}
+
+.title {
+  display: inline-block;
+  padding: 8px;
+  background-color: rgba(7, 136, 2, 0.24);
+  border-radius: 5px;
+  width: 70%;
+}
+
+.entry {
+  border-radius: 5px;
+  display: inline-block;
+  width: 70%;
+  padding: 8px;
+  background-color: rgba(232, 12, 12, 0.24);
+}
+
+.team {
+  width: 40%;
+  margin: 2px 0;
+}
+
+.categoryContainer {
+  display: inline-block;
+  width: 50%;
+  margin-left: 5%;
+  float: left;
+}
+
+.categoryDiv {
+  background: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
+  margin:15px auto;
+  display:block;
+  padding: 30px;
+  line-height: 145%;
+  overflow: auto;
+}
+
+.categoryDiv p {
+  margin-top:20px;
+}
+
+.categoryDiv button {
+  width: 50%;
+  float: right;
+}
+
+.categoryH {
+  display: block;
+  line-height: 145%;
+  margin:0 auto 12px;
+  background-color: rgba(190, 190, 190, 0.39);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.categoryH h2 {
+  font-weight: 200;
+}
+

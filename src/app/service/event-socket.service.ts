@@ -267,7 +267,7 @@ export class EventSocketService extends Unsubscriber {
         this.quizEventService.bonusAttempted(message);
         break;
       case QuizEventRegistry.END_OF_QUIZ_EVENT:
-        this.quizEventService.endOfQuiz();
+        this.quizEventService.fireEndOfQuixCompetition();
         break;
 
       case NavEventRegistry.UPDATE_SCORE:

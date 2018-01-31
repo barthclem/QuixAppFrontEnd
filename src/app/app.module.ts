@@ -51,6 +51,9 @@ const appRoutes: Routes = [
     path: 'start', component: StartPageComponent
   },
   {
+    path: 'end', component: DoneComponent
+  },
+  {
     path: 'istart', component: IStartComponent
   },
   {
