@@ -16,9 +16,11 @@ export class WebsocketService {
 
   constructor() { }
 
-  connect(): Rx.Subject<MessageEvent> {
+  connect(gamePort: number): Rx.Subject<MessageEvent> {
 
-    this._socket = io(environment.ws_url_secure);
+    const link = `${environment.ws_url_secure}:${gamePort}`;
+    console.log(`\n\n Socket Link -> ${link} \n\n`);
+    this._socket = io(link);
 
     const observable = new Observable( (observer: Rx.Observer<MessageEvent>) => {
       this._socket.on('response', (data) => {

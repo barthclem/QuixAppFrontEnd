@@ -6,5 +6,7 @@
 export const environment = {
   production: false,
   ws_url: 'http://localhost:5000',
-  ws_url_secure: 'https://localhost:3300'
+  ws_url_secure: 'https://192.168.12.1',
+  api_url_secure: 'https://192.168.12.1:4000'
 };
+

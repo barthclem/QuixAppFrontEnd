@@ -41,14 +41,20 @@ import { IStartComponent } from './i-start/i-start.component';
 import { LeaderBoardComponent } from './leader-board/leader-board.component';
 import {AudioChatService} from './service/audio-chat.service';
 import { ECategoryComponent } from './e-category/e-category.component';
+import { CreateGameComponent } from './create-game/create-game.component';
+import {TagInputModule} from 'ngx-chips';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const appRoutes: Routes = [
   {
-    path: '', component: StartPageComponent
+    path: 'g/:gameName', component: StartPageComponent
   },
   {
     path: 'start', component: StartPageComponent
+  },
+  {
+    path: 'create', component: CreateGameComponent
   },
   {
     path: 'end', component: DoneComponent
@@ -95,9 +101,11 @@ const appRoutes: Routes = [
     StartPageComponent,
     IStartComponent,
     LeaderBoardComponent,
-    ECategoryComponent
+    ECategoryComponent,
+    CreateGameComponent
   ],
   imports: [
+    TagInputModule, HttpClientModule,
     AnimatorModule, BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [ ChatService, WebsocketService, NavService,

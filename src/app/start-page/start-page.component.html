@@ -1,4 +1,4 @@
-<div class="logInSpace">
+<div class="logInSpace" *ngIf="regSuccess; else RegNotDonePage">
   <div class="logoArea">
     <img src="../../assets/img/appLogo.png" alt="quix_logo" class="quix_logo"/>
   </div>
@@ -9,10 +9,7 @@
       <input [(ngModel)]="username" type="text" id="user" name="user" placeholder="enter your username" required/><br>
       <label for="team"> TeamName</label><br>
       <select [(ngModel)]="teamName" id="team" name="teamName" value="team">
-        <option value="0" default>Choose your team</option>
-        <option value="Mega">Mega</option>
-        <option value="Stun"> Stun</option>
-        <option value="Winner">Winner</option>
+        <option *ngFor="let team of teamList" [value]="team">{{team}}</option>
 
       </select><br>
       <button class="" type="submit"  (click)="logIn()"><span>Enter</span></button>
@@ -20,3 +17,13 @@
   </div>
 </div>
 
+<ng-template #RegNotDonePage>
+
+  <div class="logInSpace">
+    <div class="gameInit">
+      <h2>{{gameName}} is  not Online.</h2>
+      <p id="ilink"> You can create one by visiting </p>
+      <p class="link"><a href="http://localhost:4200/create"> Create Game Link</a></p>
+    </div>
+  </div>
+</ng-template>

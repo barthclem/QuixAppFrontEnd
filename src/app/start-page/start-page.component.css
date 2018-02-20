@@ -72,6 +72,38 @@ input[type=text]:focus {
   border-bottom: 2px solid #e6e6e6;
 }
 
+.gameInit {
+  display: inline-block;
+  padding: 20px;
+  padding-left: 40px;
+  margin:40px  auto;
+  width: 100%;
+  text-align: center;
+}
+
+.gameInit h2 {
+  display: inline-block;
+  font-size: 30px;
+  margin: 10px auto;
+  color: #e74c3c;
+}
+
+#ilink {
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 25px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  padding:2px;
+  font-size: 25px;
+  font-style: italic;
+}
+.link a {
+  color: #ffffff;
+}
 
 
 *:focus {

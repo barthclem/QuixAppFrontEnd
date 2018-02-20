@@ -27,13 +27,18 @@ export class EventSocketService extends Unsubscriber {
     private audioChatService: AudioChatService
   ) {
     super();
-    this.socketServer = <Subject<any>> this.webSocket.connect()
-  .map((response: any): any => response);
 
-    this.subscribeToChatEvents();
-    this.subscribeToQuizEvents();
-    this.subscribeToSocketEvents();
-    this.subscribeToTimeEvents();
+}
+
+subscribeToAllEvent(gamePort: number): boolean {
+  this.socketServer = <Subject<any>> this.webSocket.connect(gamePort)
+    .map((response: any): any => response);
+
+  this.subscribeToChatEvents();
+  this.subscribeToQuizEvents();
+  this.subscribeToSocketEvents();
+  this.subscribeToTimeEvents();
+  return true;
 }
 
  subscribeToTimeEvents () {
