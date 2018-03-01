@@ -1,0 +1,28 @@
+<div class="logInSpace" *ngIf="gameNotCreated; else gameInitPage" >
+  <div class="logoArea">
+    <img src="../../assets/img/appLogo.png" alt="quix_logo" class="quix_logo"/>
+  </div>
+  <div class="formArea">
+    <h3>Create a Quix </h3>
+    <form name="logIn">
+      <label for="game">Quix Title</label><br>
+      <input [(ngModel)]="gameName" type="text" id="game" name="game" placeholder="enter the name of your quix" required/><br>
+
+      <label for="teams"> Team List</label><br>
+      <tag-input [(ngModel)]="teamList" id="teams" name="teams" theme='minimal'></tag-input><br>
+
+      <button class="" type="submit"  (click)="logIn()"><span>Enter</span></button>
+    </form>
+  </div>
+</div>
+
+<ng-template #gameInitPage>
+
+  <div class="logInSpace">
+    <div class="gameInit">
+      <h2>{{gameName}} is  created successfully.</h2>
+      <p id="ilink"> Share this link with others to join your game</p>
+      <p class="link"><a href="{{gameLink}}"> {{gameLink}}</a></p>
+    </div>
+  </div>
+</ng-template>
