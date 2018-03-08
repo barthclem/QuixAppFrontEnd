@@ -108,7 +108,6 @@ export class StartPageComponent implements OnInit, OnDestroy {
     this.httpClient.get(`${environment.api_url_secure}/${pathName}`)
       .subscribe((res: any) => {
       this.teamList = res.data.teamList.map(iTeam => iTeam.teamName);
-       alert(`Team List => ${JSON.stringify(this.teamList)}`);
         console.log(`\n\n\n Team List => ${JSON.stringify(res.data)}`);
         }, err => {
         console.log(`\n\n\n Start Page Init Error => ${JSON.stringify(err)}`);

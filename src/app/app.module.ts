@@ -48,6 +48,9 @@ import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
+    path: '', component: CreateGameComponent
+  },
+  {
     path: 'g/:gameName', component: StartPageComponent
   },
   {
